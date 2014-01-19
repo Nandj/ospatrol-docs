@@ -1,8 +1,5 @@
 
 
-# use glob syntax.
-syntax: glob
-
 *.cdb 
 *.tmp 
 *~
