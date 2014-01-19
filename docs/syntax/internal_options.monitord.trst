@@ -2,13 +2,13 @@
 
 .. OS:intopt:: monitord.day_wait
 
-    Amount of time OSSEC will wait before compressing/signing log files.
+    Amount of time OSPatrol will wait before compressing/signing log files.
 
     **Default:** 10
 
 .. OS:intopt:: monitord.compress
 
-    If set to ``1`` ``ossec-monitord`` will compress old log files.
+    If set to ``1`` ``ospatrol-monitord`` will compress old log files.
 
     **Default:** 1
 
@@ -16,7 +16,7 @@
 
 .. OS:intopt:: monitord.sign
 
-    If set to ``1`` ``ossec-monitord`` will sign old log files.
+    If set to ``1`` ``ospatrol-monitord`` will sign old log files.
 
     **Default:** 1
 

@@ -1,6 +1,6 @@
-.. _ossec_config.syscheck: 
+.. _ospatrol_config.syscheck: 
 
-ossec.conf: Syscheck Options
+ospatrol.conf: Syscheck Options
 ============================
 
 Overview 
@@ -18,22 +18,22 @@ Syscheck options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All global options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All global options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <syscheck> 
             <!-- 
             Syscheck options here
             --> 
         </syscheck> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 Options 
 ------- 
 
-.. include:: ./ossec_config.syscheck.trst
+.. include:: ./ospatrol_config.syscheck.trst

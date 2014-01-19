@@ -32,6 +32,6 @@
 
     .. note:: 
         
-         OSSEC must be compiled with the database type that is to be used. 
+         OSPatrol must be compiled with the database type that is to be used. 
 
     **Allowed:** mysql/postgresql 

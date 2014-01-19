@@ -1,7 +1,7 @@
 
-.. _ossec_config.global: 
+.. _ospatrol_config.global: 
 
-ossec.conf: Global options
+ospatrol.conf: Global options
 ==========================
 
 Overview 
@@ -18,23 +18,23 @@ Global options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All global options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All global options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <global> 
             <!-- 
             Global options here
             --> 
         </global> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 
 Options
 -------
 
-.. include:: ossec_config.global.trst 
+.. include:: ospatrol_config.global.trst 

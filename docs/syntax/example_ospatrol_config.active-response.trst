@@ -4,30 +4,30 @@ Example active response configurations:
 ---------------------------------------
 
 
-Command: Restart OSSEC on *nix systems:
+Command: Restart OSPatrol on *nix systems:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This command can be used to restart the OSSEC processes. It's commonly used to automatically restart agent processes when an ``agent.conf`` is modified.
+This command can be used to restart the OSPatrol processes. It's commonly used to automatically restart agent processes when an ``agent.conf`` is modified.
 Since no parameters are necessary the ``<expect>`` is empty.
 
 .. code-block:: console
 
   <command>
-    <name>restart-ossec</name>
-    <executable>restart-ossec.sh</executable>
+    <name>restart-ospatrol</name>
+    <executable>restart-ospatrol.sh</executable>
     <expect></expect>
   </command>
 
 
-Active-Response:  Restart the OSSEC processes:
+Active-Response:  Restart the OSPatrol processes:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This active response will restart the OSSEC processes using the ``restart-ossec`` command above. It is runs when rule ``510010`` is triggered, and it runs on the system where the rule was triggered.
+This active response will restart the OSPatrol processes using the ``restart-ospatrol`` command above. It is runs when rule ``510010`` is triggered, and it runs on the system where the rule was triggered.
 
 .. code-block:: console
 
   <active-response>
-    <command>restart-ossec</command>
+    <command>restart-ospatrol</command>
     <location>local</location>
     <rules_id>510010</rules_id>
   </active-response>
@@ -39,7 +39,7 @@ Here is an example rule checking for changes to the ``agent.conf``.
 
   <rule id="510011" level="10">
     <if_sid>550</if_sid>
-    <match>/var/ossec/etc/shared/agent.conf</match>
+    <match>/var/ospatrol/etc/shared/agent.conf</match>
     <description>agent.conf has been modified</description>
   </rule>
 
@@ -48,7 +48,7 @@ Here is an example rule checking for changes to the ``agent.conf``.
 Command: Block an IP with pf.sh:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``pf.sh`` adds an ip (``srcip``) to an ``ossec_fwtable`` packet filter table. 
+``pf.sh`` adds an ip (``srcip``) to an ``ospatrol_fwtable`` packet filter table. 
 Information on pf tables can be found `here <http://cvs.openbsd.org/faq/pf/tables.html>`_.
 
 .. code-block:: console
@@ -63,8 +63,8 @@ This is the minimum configuration necessary to utilize ``pf.sh``:
 
 .. code-block:: console
 
-  table <ossec_fwtable> persist #ossec_fwtable
-  block in log quick from <ossec_fwtable>
+  table <ospatrol_fwtable> persist #ospatrol_fwtable
+  block in log quick from <ospatrol_fwtable>
 
 Active-Response: Block an IP with pf:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,7 +90,7 @@ This active-response will run on agent ``001`` only.
 Command: Run the makelists.sh script:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``makelists.sh`` script runs ``/var/ossec/bin/ossec-makelists`` to update cdb lists.
+The ``makelists.sh`` script runs ``/var/ospatrol/bin/ospatrol-makelists`` to update cdb lists.
 This command can be triggered by changes in configured cdb lists.
 
 .. code-block:: console
@@ -106,7 +106,7 @@ Active-Response: Update cdb lists:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This active-response will run the ``makelists`` command to update the cdb lists.
-This active-response should run only on the OSSEC server since agents do not have cdb lists.
+This active-response should run only on the OSPatrol server since agents do not have cdb lists.
 
 .. code-block:: console
 
@@ -116,13 +116,13 @@ This active-response should run only on the OSSEC server since agents do not hav
     <rules_id>510011</rules_id>
   </active-response>
 
-Rule 510011: This example rule looks for changes to ``/var/ossec/lists/blocked.txt`` based on syscheck alerts.
+Rule 510011: This example rule looks for changes to ``/var/ospatrol/lists/blocked.txt`` based on syscheck alerts.
 
 .. code-block:: console
 
   <rule id="510011" level="10">
     <if_sid>550</if_sid>
-    <match>/var/ossec/lists/blocked.txt</match>
+    <match>/var/ospatrol/lists/blocked.txt</match>
     <description>blocked.txt has been modified</description>
   </rule>
 

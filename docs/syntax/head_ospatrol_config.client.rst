@@ -1,6 +1,6 @@
-.. _ossec_config.client:
+.. _ospatrol_config.client:
 
-ossec.conf: Client Options
+ospatrol.conf: Client Options
 ==========================
 
 Overview 
@@ -16,22 +16,22 @@ client options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All client options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All client options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <client> 
             <!-- 
             client options here
             --> 
         </client> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 Options 
 ------- 
 
-.. include:: ./ossec_config.client.trst
+.. include:: ./ospatrol_config.client.trst

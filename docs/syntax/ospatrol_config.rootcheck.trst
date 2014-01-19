@@ -10,7 +10,7 @@
     - systems_audit 
 
     **Allowed:** Path to a directory
-    **Default:** /var/ossec 
+    **Default:** /var/ospatrol 
 
 .. xml:element:: rootkit_files
 

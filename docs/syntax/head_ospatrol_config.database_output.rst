@@ -1,7 +1,7 @@
 
-.. _ossec_config.database_output: 
+.. _ospatrol_config.database_output: 
 
-ossec.conf: Database Output options
+ospatrol.conf: Database Output options
 ===================================
 
 Overview 
@@ -18,23 +18,23 @@ Database Output options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All database_output options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All database_output options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <database_output> 
             <!-- 
             Database Output options here
             --> 
         </database_output> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 
 Options
 -------
 
-.. include:: ossec_config.database_output.trst 
+.. include:: ospatrol_config.database_output.trst 

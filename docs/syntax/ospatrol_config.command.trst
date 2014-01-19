@@ -9,7 +9,7 @@
 
 .. xml:element:: executable
 
-    It must be a file (with exec permissions) inside ``/var/ossec/active-response/bin``.
+    It must be a file (with exec permissions) inside ``/var/ospatrol/active-response/bin``.
 
     You don't need to provide the whole path.
 

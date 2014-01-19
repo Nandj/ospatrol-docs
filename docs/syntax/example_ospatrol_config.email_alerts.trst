@@ -13,7 +13,7 @@ Global Configuration:
     <email_notification>yes</email_notification>
     <email_to>admin@example.com</email_to>
     <smtp_server>127.0.0.1</smtp_server>
-    <email_from>ossecm@example.com</email_from>
+    <email_from>ospatrolm@example.com</email_from>
   </global>
 
 
@@ -26,7 +26,7 @@ Global Configuration with a larger maximum emails per hour:
     <email_notification>yes</email_notification>
     <email_to>admin@example.com</email_to>
     <smtp_server>127.0.0.1</smtp_server>
-    <email_from>ossecm@example.com</email_from>
+    <email_from>ospatrolm@example.com</email_from>
     <email_maxperhour>100</email_maxperhour>
   </global>
 

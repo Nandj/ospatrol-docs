@@ -6,8 +6,9 @@
 
     Specify the location of the log to be read. strftime formats may be used for log file names.
     For instance, a log file named ``file.log-2011-01-22`` could be referenced with ``file.log-%Y-%m-%d``.
-    Wildcards may be used on non-Windows systems. When wildcards are used, the log files must exist at the time ``ossec-logcollector`` is started.
-    It will not automatically begin monitoring new log files. ``strftime`` and wildcards cannot be used on the same entry.
+    Wildcards may be used on non-Windows systems. When wildcards are used, the log files must exist at 
+    the time ``ospatrol-logcollector`` is started.  It will not automatically begin monitoring new 
+    log files. ``strftime`` and wildcards cannot be used on the same entry.
 
     **Default:** Multiple (eg /var/log/messages)
 
@@ -28,7 +29,8 @@
       .. _logformat-syslog:
 
       - syslog
-          This format is for plain text files in a syslog-like format. It can also be used when there is no support for the logging format, and the logs are single line messages.
+          This format is for plain text files in a syslog-like format. It can also be used when 
+          there is no support for the logging format, and the logs are single line messages.
 
       .. _logformat-snort-full:
 
@@ -96,7 +98,7 @@
           This format will be the output from the commandi (as run by root) defined by command_. The entire output will be treated as a single log.
 
       .. warning::
-          ``command`` and ``full_command`` cannot be used in the agent.conf, and must be configured in each system's ossec.conf.
+          ``command`` and ``full_command`` cannot be used in the agent.conf, and must be configured in each system's ospatrol.conf.
 
       .. _logformat_djb:
 
@@ -122,7 +124,7 @@
                   Aug  9 14:22:47 hostname log line four
                   Aug  9 14:22:47 hostname log line five
 
-              Log message as analyzed by ossec-analysisd_:
+              Log message as analyzed by ospatrol-analysisd_:
 
               .. code-block:: console
 
@@ -146,13 +148,13 @@
 
     .. code-block:: console
 
-       ossec: output: 'reg QUERY HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR':
+       ospatrol: output: 'reg QUERY HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR':
 
     with:
 
     .. code-block:: console
 
-       ossec: output: 'usb-check':
+       ospatrol: output: 'usb-check':
 
     **Allowed:** Any string.
 

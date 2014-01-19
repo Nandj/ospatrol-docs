@@ -12,7 +12,7 @@ Command Options
 
 .. xml:element:: executable
 
-    It must be a file (with exec permissions) inside ``/var/ossec/active-response/bin``. ``executable`` is required.
+    It must be a file (with exec permissions) inside ``/var/ospatrol/active-response/bin``. ``executable`` is required.
 
     You don't need to provide the whole path.
 
@@ -52,7 +52,7 @@ Active-response Options
     **Allowed:** 
 
     - *local*: on the agent that generated the event
-    - *server*: on the OSSEC server 
+    - *server*: on the OSPatrol server 
     - *defined-agent*: on a specific agent (when using this option, you need to set the 
       agent_id to use)
     - *all*: or everywhere.
@@ -80,7 +80,7 @@ Active-response Options
 .. xml:element:: repeated_offenders
 
    A comma separated list of increasing timeouts in minutes for repeat offenders. There can be a maximum of 5 entries.
-   This should be set in the ``ossec.conf`` of an agent in an agent/server setup.
+   This should be set in the ``ospatrol.conf`` of an agent in an agent/server setup.
 
 
    **Example:**
@@ -103,7 +103,7 @@ Active-response Options
       </active-response>
 
 
-.. include:: example_ossec_config.active-response.trst
+.. include:: example_ospatrol_config.active-response.trst
 
 
 

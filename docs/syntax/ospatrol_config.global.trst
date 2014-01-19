@@ -50,7 +50,7 @@
     .. code-block:: console
 
         Variables:
-        "$TIMESTAMP"	-	The time the event was processed by OSSEC.
+        "$TIMESTAMP"	-	The time the event was processed by OSPatrol.
         "$FTELL"	-	Unknown
         "$RULEALERT"	-	Unknown
         "$HOSTNAME"	-	Hostname of the system generating the event.
@@ -124,10 +124,10 @@
 
 .. xml:element:: picviz_socket
 
-    The full path of the socket that ossec will write alerts/events to.  This will 
+    The full path of the socket that ospatrol will write alerts/events to.  This will 
     then be read by picviz for processing.  
 
-    **Allowed:** File and path that ossec will create and feed events to. 
+    **Allowed:** File and path that ospatrol will create and feed events to. 
 
 .. xml:element:: geoip_db_path
 

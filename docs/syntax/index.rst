@@ -8,6 +8,6 @@ Syntax and Options
 
     regex 
     analysis
-    ossec_config
+    ospatrol_config
     head_agent_config
     internal_options

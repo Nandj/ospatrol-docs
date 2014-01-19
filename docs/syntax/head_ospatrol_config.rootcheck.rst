@@ -1,6 +1,6 @@
-.. _ossec_config.rootcheck: 
+.. _ospatrol_config.rootcheck: 
 
-ossec.conf: Rootcheck options
+ospatrol.conf: Rootcheck options
 =============================
 
 Overview 
@@ -18,20 +18,20 @@ rootcheck options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All rootcheck options must be configured in the /var/ossec/etc/ossec.conf or 
-/var/ossec/etc/shared/agents.conf and used within the <ossec_config> tag.  
+All rootcheck options must be configured in the /var/ospatrol/etc/ospatrol.conf or 
+/var/ospatrol/etc/shared/agents.conf and used within the <ospatrol_config> tag.  
 
-XML excerpt to show location if part of ossec.conf:
+XML excerpt to show location if part of ospatrol.conf:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <rootcheck> 
             <!-- 
             rootcheck options here
             --> 
         </rootcheck> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 XML excerpt to the Location if part of agent.conf 
 
@@ -49,4 +49,4 @@ XML excerpt to the Location if part of agent.conf
 Options
 -------
 
-.. include:: ossec_config.rootcheck.trst 
+.. include:: ospatrol_config.rootcheck.trst 

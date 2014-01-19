@@ -1,7 +1,7 @@
 
-.. _ossec_config.reports: 
+.. _ospatrol_config.reports: 
 
-ossec.conf: Reports options
+ospatrol.conf: Reports options
 ==========================
 
 Overview 
@@ -18,23 +18,23 @@ Reports options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All reports options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All reports options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <reports> 
             <!-- 
             Reports options here
             --> 
         </reports> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 
 Options
 -------
 
-.. include:: ossec_config.reports.trst 
+.. include:: ospatrol_config.reports.trst 

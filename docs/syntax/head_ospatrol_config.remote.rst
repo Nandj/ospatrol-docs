@@ -1,6 +1,6 @@
-.. _ossec_config.remote: 
+.. _ospatrol_config.remote: 
 
-ossec.conf: Remote Options
+ospatrol.conf: Remote Options
 ==========================
 
 Overview 
@@ -16,22 +16,22 @@ remote options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All remote options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All remote options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <remote> 
             <!-- 
             remote options here
             --> 
         </remote> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 Options 
 ------- 
 
-.. include:: ./ossec_config.remote.trst
+.. include:: ./ospatrol_config.remote.trst

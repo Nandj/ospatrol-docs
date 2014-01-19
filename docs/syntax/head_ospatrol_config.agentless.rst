@@ -1,7 +1,7 @@
-.. _ossec_config.agentless:
+.. _ospatrol_config.agentless:
 
 
-ossec.conf: Agentless Options
+ospatrol.conf: Agentless Options
 =============================
 
 Overview 
@@ -18,22 +18,22 @@ Agentless options are available in the the following installation types:
 Location 
 ^^^^^^^^
 
-All agentless options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All agentless options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <agentless> 
             <!-- 
             agentless options here
             --> 
         </agentless> 
-    </ossec_config> 
+    </ospatrol_config> 
 
 Options 
 ------- 
 
-.. include:: ./ossec_config.agentless.trst
+.. include:: ./ospatrol_config.agentless.trst

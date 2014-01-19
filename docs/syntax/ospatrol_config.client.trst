@@ -24,7 +24,7 @@
 
     .. note:
 
-        This first appeared in OSSEC 2.7.
+        This first appeared in OSPatrol 2.7.
 
 .. xml:element:: notify_time
 

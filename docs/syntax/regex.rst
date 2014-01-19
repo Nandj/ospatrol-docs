@@ -3,7 +3,7 @@
 Regular Expression Syntax
 =========================
 
-Currently OSSEC supports to regex syntax:
+Currently OSPatrol supports to regex syntax:
 
 * OS_Regex or regex 
 * OS_Match or sregex 

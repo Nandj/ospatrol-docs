@@ -14,7 +14,7 @@
     **Allowed:** Any alert level 0 to 16 
 
     .. note::
-        ``level`` should be set at or above the `email_alert_level <./head_ossec_config.alerts.html#element-email_alert_level>`_ in the ``<alerts>`` section of the configuration.
+        ``level`` should be set at or above the `email_alert_level <./head_ospatrol_config.alerts.html#element-email_alert_level>`_ in the ``<alerts>`` section of the configuration.
 
 .. xml:element:: group 
 

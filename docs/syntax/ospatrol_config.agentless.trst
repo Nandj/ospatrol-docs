@@ -26,7 +26,7 @@
 
    This determines whether the checks are periodic or periodic_diff.
 
-   * periodic: The output from the scripts is processed by the OSSEC processes.
+   * periodic: The output from the scripts is processed by the OSPatrol processes.
 
    * periodic_diff: The output from the scripts is compared to the output of previous runs.
 

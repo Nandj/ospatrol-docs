@@ -5,7 +5,7 @@
 
     Filter by group/category.  
 
-    **Allowed:** Any category used within OSSEC Rules. 
+    **Allowed:** Any category used within OSPatrol Rules. 
 
 .. xml:element:: categories
 
@@ -15,13 +15,13 @@
 
         This is the same as the group option above.  
 
-    **Allowed:** Any category used within OSSEC Rules. 
+    **Allowed:** Any category used within OSPatrol Rules. 
 
 .. xml:element:: rule
         
     Rule ID to Filter for. 
 
-    **Allowed:** Any Rule ID in OSSEC Rules. 
+    **Allowed:** Any Rule ID in OSPatrol Rules. 
 
 .. xml:element:: level
 

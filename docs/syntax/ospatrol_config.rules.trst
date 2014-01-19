@@ -34,33 +34,33 @@
 
     **Example:**
 
-    #. Loading all rules in directory /var/ossec/rules ending ending with _rules.xml 
+    #. Loading all rules in directory /var/ospatrol/rules ending ending with _rules.xml 
         
         .. code-block:: xml 
             
-            <ossec_config>
+            <ospatrol_config>
                 <rules>
                     <rule_dir>rules</rule_dir>
                 </rules>
-            </ossec_config>
+            </ospatrol_config>
 
-    #. Loading all rules in directory /var/ossec/rules/plugins ending with .xml 
+    #. Loading all rules in directory /var/ospatrol/rules/plugins ending with .xml 
 
         .. code-block:: xml 
             
-            <ossec_config>
+            <ospatrol_config>
                 <rules>
                     <rule_dir pattern=".xml$">rules</rule_dir>
                 </rules>
-            </ossec_config>
+            </ospatrol_config>
 
 .. xml:element:: decoder 
 
-    Load a single decoder file. The path should be relative to the install directory, typically ``/var/ossec``.
+    Load a single decoder file. The path should be relative to the install directory, typically ``/var/ospatrol``.
     
     .. note:: 
 
-        If no decoders are specified in ossec.conf the legacy ``etc/decoder.xml`` and 
+        If no decoders are specified in ospatrol.conf the legacy ``etc/decoder.xml`` and 
         ``etc/local_decoder.xml`` are loaded
 
     .. warning::
@@ -74,7 +74,7 @@
 
     Load a directory of decoders.  The order of loaded files will be in alphebics order 
     and will not load any files that have been loaded before.
-    The path should be relative to the install directory, typically ``/var/ossec``.
+    The path should be relative to the install directory, typically ``/var/ospatrol``.
 
     **Attributes:** 
     
@@ -87,26 +87,26 @@
 
     **Example:**
 
-    #. Loading all decoders in directory /var/ossec/rules ending ending with _decoder.xml 
+    #. Loading all decoders in directory /var/ospatrol/rules ending ending with _decoder.xml 
         
         .. code-block:: xml 
             
-            <ossec_config>
+            <ospatrol_config>
                 <rules>
                     <decoder_dir>rules</decoder_dir>
                 </rules>
-            </ossec_config>
+            </ospatrol_config>
 
-    #. Loading all decoders in directory /var/ossec/rules/plugins/plugins/decoders 
+    #. Loading all decoders in directory /var/ospatrol/rules/plugins/plugins/decoders 
        ending with .xml 
 
         .. code-block:: xml 
             
-            <ossec_config>
+            <ospatrol_config>
                 <rules>
                     <decoder_dir pattern=".xml$">rules/plugins/decoders</decoder_dir>
                 </rules>
-            </ossec_config>
+            </ospatrol_config>
 
     .. warning::
   
@@ -118,8 +118,8 @@
 
     .. note:: 
 
-        Due to the way cdb files are compiled using tmp files by the `ossec-makelists` 
-        program the file extension should not be include in this directive.  ossec's 
+        Due to the way cdb files are compiled using tmp files by the `ospatrol-makelists` 
+        program the file extension should not be include in this directive.  ospatrol's 
         tools will correctly append the correct .cdb or .txt extension as needed. 
 
     **Allowed:** Path to a list file to be loaded and compiled. 

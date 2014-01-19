@@ -1,7 +1,7 @@
-.. _ossec_config.active-response:
+.. _ospatrol_config.active-response:
 
 
-ossec.conf: Active Response Options
+ospatrol.conf: Active Response Options
 ===================================
 
 Overview 
@@ -29,14 +29,14 @@ This section defines when the command will be run.
 Location 
 ^^^^^^^^
 
-All active-response options must be configured in the /var/ossec/etc/ossec.conf 
-and used within the <ossec_config> tag.  
+All active-response options must be configured in the /var/ospatrol/etc/ospatrol.conf 
+and used within the <ospatrol_config> tag.  
 
 XML excerpt to show location:
 
 .. code-block:: xml 
 
-    <ossec_config> 
+    <ospatrol_config> 
         <command>
             <!--
             Command options here 
@@ -47,7 +47,7 @@ XML excerpt to show location:
             active-response options here
             --> 
         </active-response> 
-    </ossec_config> 
+    </ospatrol_config> 
 
-.. include:: ./ossec_config.active-response.trst
+.. include:: ./ospatrol_config.active-response.trst
 
