@@ -1,23 +1,23 @@
 
-.. _ossec-logtest: 
+.. _ospatrol-logtest: 
 
-ossec-logtest 
+ospatrol-logtest 
 =============
 
-ossec-logtest is the single most useful tool when working with ossec.  This tool allows oneself 
-to test and verify log files in the exact same way that `ossec-anaylistd` does.  
+ospatrol-logtest is the single most useful tool when working with ospatrol.  This tool allows oneself 
+to test and verify log files in the exact same way that `ospatrol-anaylistd` does.  
 
-Something ossec-logtest can help with: 
+Something ospatrol-logtest can help with: 
 
 - Writing rules (Debugging your custom rules) 
 - Troubleshooting false positives or false negatives 
 
-ossec-logtest accepts standard input for all log to test.  
+ospatrol-logtest accepts standard input for all log to test.  
 
 osssec-logtest argument options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. program:: ossec-logtest 
+.. program:: ospatrol-logtest 
 
 .. option:: -d 
 
@@ -25,7 +25,7 @@ osssec-logtest argument options
 
 .. option:: -V
  
-   Print the Version and license message for OSSEC and ossec-logtest. 
+   Print the Version and license message for OSPatrol and ospatrol-logtest. 
 
 .. option:: -h 
    
@@ -33,7 +33,7 @@ osssec-logtest argument options
 
 .. option:: -t 
 
-    Test configuration.  This will print file details on the ossec-anaylistd rules, 
+    Test configuration.  This will print file details on the ospatrol-anaylistd rules, 
     decoders, and lists as they are loaded and the order they were processed.  
 
 .. option:: -v 
@@ -52,25 +52,25 @@ osssec-logtest argument options
 
 .. option:: -u <user> 
 
-    Run as <user>: ossec-logtest will change uid to the user specified as part of this 
+    Run as <user>: ospatrol-logtest will change uid to the user specified as part of this 
     argument. 
 
-    Often used with `ossec-logtest -g`
+    Often used with `ospatrol-logtest -g`
 
 .. option:: -g <group>
 
-    Run as <group>: ossec-logtest will change gid to the group specified as part of this 
+    Run as <group>: ospatrol-logtest will change gid to the group specified as part of this 
     argument. 
 
-    Often used with `ossec-logtest -u`
+    Often used with `ospatrol-logtest -u`
 
 .. option:: -c <config> 
 
-    <config> is the path and filename to load in place of the default /var/ossec/etc/ossec.conf. 
+    <config> is the path and filename to load in place of the default /var/ospatrol/etc/ospatrol.conf. 
 
 .. option:: -D <dir> 
 
-    This is the path that ossec-logtest will chroot to before it completes loading all rules, 
+    This is the path that ospatrol-logtest will chroot to before it completes loading all rules, 
     decoders, and lists and processing standard input.  
 
 .. option:: -a 
@@ -81,7 +81,7 @@ osssec-logtest argument options
 Caveats
 ~~~~~~~
 
-Some log formats will be processed differently than they appear in the log file. MySQL log files for instance will have ``MySQL log: `` prepended to the log message before analysis. If using ossec-logtest to test MySQL logs, please add this string to the beginning.
+Some log formats will be processed differently than they appear in the log file. MySQL log files for instance will have ``MySQL log: `` prepended to the log message before analysis. If using ospatrol-logtest to test MySQL logs, please add this string to the beginning.
 
 Example:
 
@@ -92,14 +92,14 @@ Given the following MySQL log message:
    130218 12:07:52 [Warning] Unsafe statement written to the binary log using statement format since BINLOG_FORMAT = STATEMENT. The statement is unsafe because it uses a LIMIT clause. This is unsafe because the set of rows included cannot be predicted. Statement: DELETE FROM `emailQueue` WHERE `emailQueueID` = '12207' LIMIT 1
 
 
-The message that should be pasted into ossec-logtest is:
+The message that should be pasted into ospatrol-logtest is:
 
 .. code-block:: console
 
    MySQL log: 130218 12:07:52 [Warning] Unsafe statement written to the binary log using statement format since BINLOG_FORMAT = STATEMENT. The statement is unsafe because it uses a LIMIT clause. This is unsafe because the set of rows included cannot be predicted. Statement: DELETE FROM `emailQueue` WHERE `emailQueueID` = '12207' LIMIT 1
 
 
-ossec-logtest example usage
+ospatrol-logtest example usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Example 1: Testing standard rules
@@ -109,14 +109,14 @@ Example 1: Testing standard rules
 
 .. code-block:: console 
 
-        # echo "Aug 29 15:33:13 ns3 named[464]: client 217.148.39.3#1036: query (cache) denied" | /var/ossec/bin/ossec-logtest -f
-        2010/08/10 06:57:06 ossec-testrule: INFO: Reading decoder file loadables/decoders/00_decoders.xml.
-        2010/08/10 06:57:06 ossec-testrule: INFO: Reading decoder file loadables/decoders/50_named.xml.
-        2010/08/10 06:57:06 ossec-testrule: INFO: Reading decoder file loadables/decoders/50_pam.xml.
-        2010/08/10 06:57:06 ossec-testrule: INFO: Reading decoder file loadables/decoders/50_sshd.xml.
-        2010/08/10 06:57:06 ossec-testrule: INFO: Reading loading the lists file: 'loadables/lists/rfc1918-privateaddresses'
-        2010/08/10 06:57:06 ossec-testrule: INFO: Started (pid: 78828).
-        ossec-testrule: Type one log per line.
+        # echo "Aug 29 15:33:13 ns3 named[464]: client 217.148.39.3#1036: query (cache) denied" | /var/ospatrol/bin/ospatrol-logtest -f
+        2010/08/10 06:57:06 ospatrol-testrule: INFO: Reading decoder file loadables/decoders/00_decoders.xml.
+        2010/08/10 06:57:06 ospatrol-testrule: INFO: Reading decoder file loadables/decoders/50_named.xml.
+        2010/08/10 06:57:06 ospatrol-testrule: INFO: Reading decoder file loadables/decoders/50_pam.xml.
+        2010/08/10 06:57:06 ospatrol-testrule: INFO: Reading decoder file loadables/decoders/50_sshd.xml.
+        2010/08/10 06:57:06 ospatrol-testrule: INFO: Reading loading the lists file: 'loadables/lists/rfc1918-privateaddresses'
+        2010/08/10 06:57:06 ospatrol-testrule: INFO: Started (pid: 78828).
+        ospatrol-testrule: Type one log per line.
 
 
 
@@ -171,20 +171,20 @@ Example 1: Testing standard rules
                Info - Link: 'http://www.reedmedia.net/misc/dns/errors.html'
         **Alert to be generated.
 
-Example 2: Using OSSEC for the forensic analysis of log files
+Example 2: Using OSPatrol for the forensic analysis of log files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have one old log file that you want to check or if you are doing a 
-forensics analysis of a box and wants to check the logs with OSSEC, we 
+forensics analysis of a box and wants to check the logs with OSPatrol, we 
 now have a solution too.
 
-Let’s say you have a file /var/log/secure that you want to analyze with OSSEC. 
-You need to use the ossec-logtest tool with the “``-a``” flag to reproduce 
+Let’s say you have a file /var/log/secure that you want to analyze with OSPatrol. 
+You need to use the ospatrol-logtest tool with the “``-a``” flag to reproduce 
 the alerts:
 
 .. code-block:: console 
 
-    # cat /var/log/secure | /var/ossec/bin/ossec-logtest -a
+    # cat /var/log/secure | /var/ospatrol/bin/ospatrol-logtest -a
 
     ** Alert 1264788284.11: - syslog,sshd,authentication_success,
     2010 Jan 29 14:04:44 enigma->stdin
@@ -200,13 +200,13 @@ the alerts:
     User: dcid
     Jan 15 11:19:20 enigma sshd[18853]: Accepted publickey for dcid from 127.0.0.1 port 6725 ssh2
 
-You will get the alerts just like you would at /var/ossec/logs/alerts.log. The 
-benefit now is that you can pipe this output to :ref:`ossec-reported` to get a 
+You will get the alerts just like you would at /var/ospatrol/logs/alerts.log. The 
+benefit now is that you can pipe this output to :ref:`ospatrol-reported` to get a 
 better view of what is going on:
 
 .. code-block:: console 
 
-    # cat /var/log/secure | /var/ossec/bin/ossec-logtest -a |/var/ossec/bin/ossec-reported
+    # cat /var/log/secure | /var/ospatrol/bin/ospatrol-logtest -a |/var/ospatrol/bin/ospatrol-reported
     Report completed. ==
     ————————————————
     ->Processed alerts: 522
@@ -249,7 +249,7 @@ box:
 
 .. code-block:: console 
 
-    # cat /var/log/secure | /var/ossec/bin/ossec-logtest -a |/var/ossec/bin/ossec-reported -f group authentication_failures
+    # cat /var/log/secure | /var/ospatrol/bin/ospatrol-logtest -a |/var/ospatrol/bin/ospatrol-reported -f group authentication_failures
 
     Report completed. ==
     ————————————————

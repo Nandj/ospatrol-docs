@@ -1,20 +1,20 @@
 
-.. _ossec-reportd:
+.. _ospatrol-reportd:
 
-ossec-reportd
+ospatrol-reportd
 ==============
 
-  ``ossec-reportd`` is a program to create reports from OSSEC alerts.
-  ``ossec-reportd`` accepts alerts on ``stdin``, and outputs a report on ``stderr``.
+  ``ospatrol-reportd`` is a program to create reports from OSPatrol alerts.
+  ``ospatrol-reportd`` accepts alerts on ``stdin``, and outputs a report on ``stderr``.
 
   .. note::
-    Since ``ossec-reportd`` outputs to stderr some utilities like ``less`` will not work if you do not redirect the output.
-    End the ossec-reportd with ``2>&1`` to redirect stderr to stdout. ``more`` or ``less`` can be easily used after the stderr redirect.
+    Since ``ospatrol-reportd`` outputs to stderr some utilities like ``less`` will not work if you do not redirect the output.
+    End the ospatrol-reportd with ``2>&1`` to redirect stderr to stdout. ``more`` or ``less`` can be easily used after the stderr redirect.
 
-ossec-reportd argument options
+ospatrol-reportd argument options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. program:: ossec-reportd
+.. program:: ospatrol-reportd
 
 .. option:: -h
 
@@ -37,7 +37,7 @@ ossec-reportd argument options
     Show the alerts related to the summary.
 
 
-ossec-reportd example usage
+ospatrol-reportd example usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Example 1: Show Successful Logins
@@ -45,28 +45,28 @@ Example 1: Show Successful Logins
 
 .. code-block:: console
 
-    # cat /var/ossec/logs/alerts/alerts.log | /var/ossec/bin/ossec-reportd -f group authentication_success
+    # cat /var/ospatrol/logs/alerts/alerts.log | /var/ospatrol/bin/ospatrol-reportd -f group authentication_success
 
 Example 2: Show Alerts Level 10 and Greater
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-    # cat /var/ossec/logs/alerts/alerts.log | /var/ossec/bin/ossec-reportd -f level 10
+    # cat /var/ospatrol/logs/alerts/alerts.log | /var/ospatrol/bin/ospatrol-reportd -f level 10
 
 Example 3: Show the srcip for all users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-    # cat /var/ossec/logs/alerts/alerts.log | /var/ossec/bin/ossec-reportd -f group authentication -r user srcip
+    # cat /var/ospatrol/logs/alerts/alerts.log | /var/ospatrol/bin/ospatrol-reportd -f group authentication -r user srcip
 
 Example 4: Show Changed files as reported by Syscheck
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-    # cat /var/ossec/logs/alerts/alerts.log | /var/ossec/bin/ossec-reportd -f group syscheck -r location filename
+    # cat /var/ospatrol/logs/alerts/alerts.log | /var/ospatrol/bin/ospatrol-reportd -f group syscheck -r location filename
 
 
 Example output
@@ -74,9 +74,9 @@ Example output
 
 .. code-block:: none
 
-  # cat /var/ossec/logs/alerts/alerts.log | /var/ossec/bin/ossec-reportd 2>&1 | more
-  2011/07/11 21:01:36 ossec-reportd: INFO: Started (pid: 1444).
-  2011/07/11 21:01:41 ossec-reportd: INFO: Report completed. Creating output...
+  # cat /var/ospatrol/logs/alerts/alerts.log | /var/ospatrol/bin/ospatrol-reportd 2>&1 | more
+  2011/07/11 21:01:36 ospatrol-reportd: INFO: Started (pid: 1444).
+  2011/07/11 21:01:41 ospatrol-reportd: INFO: Report completed. Creating output...
 
   Report completed. ==
   ------------------------------------------------
@@ -103,7 +103,7 @@ Example output
   syslog                                          |10      |
   sudo                                            |6       |
   dropbearrecon                                   |4       |
-  ossec                                           |4       |
+  ospatrol                                           |4       |
   sshd                                            |4       |
   authentication_success                          |2       |
   windows                                         |2       |
@@ -115,12 +115,12 @@ Example output
   Top entries for 'Location':
   ------------------------------------------------
   ix->/var/log/secure                             |4       |
-  ix->ossec-logcollector                          |3       |
+  ix->ospatrol-logcollector                          |3       |
   (vistapc) 192.168.17.0->WinEvtLog               |2       |
   buffalo1->/var/log/secure                       |2       |
   buffalo2->/var/log/secure                       |2       |
   (junction) 192.168.17.17->/var/log/secure       |1       |
-  (junction) 192.168.17.17->ossec-logcollector    |1       |
+  (junction) 192.168.17.17->ospatrol-logcollector    |1       |
   ix->/var/log/local6                             |1       |
   junction->/var/log/secure                       |1       |
 

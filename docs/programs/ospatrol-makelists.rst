@@ -1,18 +1,18 @@
 
-.. _ossec-makelists:
+.. _ospatrol-makelists:
 
-ossec-makelists
+ospatrol-makelists
 =============
 
-The ``ossec-makelists`` utility to compile cdb databases.
-``ossec-makelists`` will scan ossec.conf for database files, check the mtime, and recompile all out of date databases.
+The ``ospatrol-makelists`` utility to compile cdb databases.
+``ospatrol-makelists`` will scan ospatrol.conf for database files, check the mtime, and recompile all out of date databases.
 
 See :ref:`manual-rule-lists` for more information.
 
-ossec-makelists argument options
+ospatrol-makelists argument options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. program:: ossec-makelists 
+.. program:: ospatrol-makelists 
 
 .. option:: -h
 
@@ -42,35 +42,35 @@ ossec-makelists argument options
 
     Run with configuration file of <config>.
 
-    **Default** /var/ossec/etc/ossec.conf
+    **Default** /var/ospatrol/etc/ospatrol.conf
 
 .. option:: -D <dir>
 
     Chroot to <dir>.
 
-    **Default** /var/ossec
+    **Default** /var/ospatrol
 
 
 
-ossec-makelists example usage
+ospatrol-makelists example usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-Example: Running ossec-makelists and an update is necessary
+Example: Running ospatrol-makelists and an update is necessary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-    # /var/ossec/bin/ossec-makelists
+    # /var/ospatrol/bin/ospatrol-makelists
      * File lists/blocked.txt.cdb need to be updated
 
 
-Example: Running ossec-makelists when no update is necessary
+Example: Running ospatrol-makelists when no update is necessary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console 
 
-    # /var/ossec/bin/ossec-makelists
+    # /var/ospatrol/bin/ospatrol-makelists
      * File lists/blocked.txt.cdb does not need to be compiled
 

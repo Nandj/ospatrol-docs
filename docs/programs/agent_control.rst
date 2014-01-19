@@ -32,7 +32,7 @@ agent_control argument options
 
 .. option:: -R <agent_id>
 
-    Restarts the OSSEC processes on the agent
+    Restarts the OSPatrol processes on the agent
 
     .. note::
        Requires active response to be enabled.
@@ -65,9 +65,9 @@ all of them, use :option:`agent_control -l` only.
 
 .. code-block:: console 
 
-    # /var/ossec/bin/agent_control -lc
-    OSSEC HIDS agent_control. List of available agents:
-    ID: 000, Name: enigma.ossec.net (server), IP: 127.0.0.1, Active/Local
+    # /var/ospatrol/bin/agent_control -lc
+    OSPatrol HIDS agent_control. List of available agents:
+    ID: 000, Name: enigma.ospatrol.net (server), IP: 127.0.0.1, Active/Local
     ID: 002, Name: winhome, IP: 192.168.2.190, Active
     ID: 005, Name: jul, IP: 192.168.2.0/24, Active
     ID: 165, Name: esqueleto2, IP: 192.168.2.99, Active
@@ -80,16 +80,16 @@ To query an agent, just use the :option:`agent_control -i` option followed by th
 
 .. code-block:: console 
 
-    # /var/ossec/bin/agent_control -i 002
+    # /var/ospatrol/bin/agent_control -i 002
 
-    OSSEC HIDS agent_control. Agent information:
+    OSPatrol HIDS agent_control. Agent information:
     Agent ID: 002
     Agent Name: winhome
     IP address: 192.168.2.190
     Status: Active
 
     Operating system: Microsoft Windows XP Professional (Build 2600)
-    Client version: OSSEC HIDS v1.5-SNP-080412
+    Client version: OSPatrol HIDS v1.5-SNP-080412
     Last keep alive: Fri Apr 25 14:33:03 2008
 
     Syscheck last started at: Fri Apr 25 05:07:13 2008
@@ -103,8 +103,8 @@ option followed by the :option:`agent_control -u` with the agent id.
 
 .. code-block:: console 
 
-    # /var/ossec/bin/agent_control -r -u 000
+    # /var/ospatrol/bin/agent_control -r -u 000
 
-    OSSEC HIDS agent_control: Restarting Syscheck/Rootcheck locally.
+    OSPatrol HIDS agent_control: Restarting Syscheck/Rootcheck locally.
 
 

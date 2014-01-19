@@ -4,7 +4,7 @@
 agent-auth
 =============
 
-The agent-auth program is the client application used with :ref:`ossec-authd` to automatically add agents to an OSSEC manager.
+The agent-auth program is the client application used with :ref:`ospatrol-authd` to automatically add agents to an OSPatrol manager.
 
 agent-auth argument options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,7 +21,7 @@ agent-auth argument options
 
 .. option:: -p <port>
 
-    Port ossec-authd is running on.
+    Port ospatrol-authd is running on.
     **Default** 1515
 
 .. option:: -A <agent_name>
@@ -31,8 +31,8 @@ agent-auth argument options
 
 .. option:: -D
 
-    Directory where OSSEC is installed.
-    **Default** /var/ossec
+    Directory where OSPatrol is installed.
+    **Default** /var/ospatrol
 
 
 agent-auth example usage
@@ -43,7 +43,7 @@ Example: Adding an agent with a hostname
 
 .. code-block:: console
 
-    # /var/ossec/bin/agent-auth -m 192.168.1.1 -p 1515 -A example-agent
+    # /var/ospatrol/bin/agent-auth -m 192.168.1.1 -p 1515 -A example-agent
     INFO: Connected to 192.168.1.1:1515
     INFO: Using agent name as: melancia
     INFO: Send request to manager. Waiting for reply.
