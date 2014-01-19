@@ -18,12 +18,12 @@ The agent.conf is valid on the server install only.
 Location 
 ^^^^^^^^
 
-The ``agent.conf`` exists in ``/var/ossec/etc/shared``.
-It should be readable by the ossec user.
+The ``agent.conf`` exists in ``/var/ospatrol/etc/shared``.
+It should be readable by the ospatrol user.
 
 .. codeblock:: console
 
-    -r-xr-x---  1 root  ossec  10908 Aug 12 16:06 /var/ossec/etc/shared/agent.conf
+    -r-xr-x---  1 root  ospatrol  10908 Aug 12 16:06 /var/ospatrol/etc/shared/agent.conf
 
 
 XML excerpt to show location:

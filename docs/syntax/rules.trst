@@ -57,8 +57,8 @@
     .. _overwrite:
 
     - *overwrite*
-	- Used to supercede an OSSEC rule with local changes.
-        - This is useful to change the level or other options of rules included with OSSEC.
+	- Used to supercede an OSPatrol rule with local changes.
+        - This is useful to change the level or other options of rules included with OSPatrol.
 	- **Allowed** yes
 
 .. xml:element:: match
@@ -221,7 +221,7 @@
 
 .. xml:element:: list 
 
-    Preform a CDB lookup using an ossec list.  This is a fast on disk database which will 
+    Preform a CDB lookup using an OSPatrol list.  This is a fast on disk database which will 
     always find keys within two seeks of the file.  
 
     **Attributes:**
@@ -289,7 +289,7 @@
 
     **Allowed:** 
         
-        Path to the CDB file to be used for lookup from the OSSEC directory.  This file must also be included in the ossec.conf file.
+        Path to the CDB file to be used for lookup from the OSPatrol directory.  This file must also be included in the ospatrol.conf file.
 
     **Example:**
 
@@ -335,9 +335,9 @@
         <rule id="502" level="3">
             <if_sid>500</if_sid>
             <options>alert_by_email</options>
-            <match>Ossec started</match>
-            <description>Ossec server started.</description>
-            <info type="link">http://ossec.net/wiki/Rule:205</info>
+            <match>OSPatrol started</match>
+            <description>OSPatrol server started.</description>
+            <info type="link">http://ospatrol.com/go/rule:205</info>
             <info type="cve">2009-1002</info>
             <info type="osvdb"> 61509</info>
             <info type="text">Internal Why we are running this run in our company</info>

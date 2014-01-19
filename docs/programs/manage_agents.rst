@@ -6,12 +6,12 @@ manage_agents
 
 manage_agents is available in two versions:
 
-- a version for OSSEC server installations
-- a version for OSSEC agent installations
+- a version for OSPatrol server installations
+- a version for OSPatrol agent installations
 
 The purpose of manage_agents is to provide an easy-to-use interface to handle authentication 
-keys for OSSEC agents. These authentication keys are required for secure (encrypted and 
-authenticated) communication between the OSSEC server and its affiliated agent instances.
+keys for OSPatrol agents. These authentication keys are required for secure (encrypted and 
+authenticated) communication between the OSPatrol server and its affiliated agent instances.
 
 manage_agents argument options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,7 +24,7 @@ manage_agents argument options
 
 .. option:: -V 
 
-    Display OSSEC Version. 
+    Display OSPatrol Version. 
 
 .. option:: -l 
 
@@ -41,17 +41,17 @@ manage_agents argument options
 .. option:: -f  <file>
 
     Generate clients in bulk from <file> (Manager only). The file is a comma delimited file containing the IP addresses and agent names to be added.
-    This file should be located within ``/var/ossec``, and referenced by its path relative to ``/var/ossec``.
+    This file should be located within ``/var/ospatrol``, and referenced by its path relative to ``/var/ospatrol``.
 
 **Example:**
 
 .. code-block:: console
 
-   # cat /var/ossec/k
+   # cat /var/ospatrol/k
    192.168.1.2,host02
    192.168.1.3,host03
 
-   # /var/ossec/bin/manage_agents -f /k         
+   # /var/ospatrol/bin/manage_agents -f /k         
    Bulk load file: /k
    Opening: [/k]
    Agent information:
@@ -74,5 +74,5 @@ manage_agents argument options
 Usage 
 -----
 
-The OSSEC manual goes into details on usage of this command at :ref:`manual_agent_manage`
+The OSPatrol manual goes into details on usage of this command at :ref:`manual_agent_manage`
 

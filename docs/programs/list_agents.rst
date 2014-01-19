@@ -4,14 +4,14 @@
 list_agents
 ===========
 
-OSSEC HIDS list_agents: List available agents.
+OSPatrol HIDS list_agents: List available agents.
 
-list_agents is only available on OSSEC servers or local mode installations. 
+list_agents is only available on OSPatrol servers or local mode installations. 
 It can be used to retrieve
 
-- a list of all OSSEC agents that successfully connected to the server in the past
-- a list of all OSSEC agents currently connected to the server
-- a list of all OSSEC agents that were connected to the server in the past but are currently not connected.
+- a list of all OSPatrol agents that successfully connected to the server in the past
+- a list of all OSPatrol agents currently connected to the server
+- a list of all OSPatrol agents that were connected to the server in the past but are currently not connected.
 
 If an agent was added via the :ref:`manage_agents` tool but has not yet been connected to the server, it will not show up in the output of list_agents.
 

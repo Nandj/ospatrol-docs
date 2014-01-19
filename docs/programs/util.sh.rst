@@ -4,7 +4,7 @@
 util.sh
 =======
 
-The ``util.sh`` script can add a file to be monitored by ``ossec-logcollector``. 
+The ``util.sh`` script can add a file to be monitored by ``ospatrol-logcollector``. 
 It can also add a full_command to check for changes to a website, or for changes to the name server of a domain.  
 
 A `blogpost <http://dcid.me/2011/10/3woo-alerting-on-dns-ip-address-changes/>`_ from Daniel Cid (for 3WoO) introduced this utility.
@@ -16,11 +16,11 @@ util.sh argument options
 
 .. option:: addfile <filename> [<format>]
 
-    Add a file to be monitored by ``ossec-logtest``. A ``localfile`` will be added to the ossec.conf.
+    Add a file to be monitored by ``ospatrol-logtest``. A ``localfile`` will be added to the ospatrol.conf.
 
 .. option:: addsite <domain>
 
-   Monitor a website for changes. A ``full_command`` will be added to the ``ossec.conf`` using lynx to dump the initial page.
+   Monitor a website for changes. A ``full_command`` will be added to the ``ospatrol.conf`` using lynx to dump the initial page.
    A rule can be written to monitor this output for changes.
 
    .. note::
@@ -31,7 +31,7 @@ util.sh argument options
 
 .. option:: adddns <domain>
 
-   Monitor the name server of a domain for changes. A ``full_command`` will be added to the ossec.conf using host
+   Monitor the name server of a domain for changes. A ``full_command`` will be added to the ospatrol.conf using host
 
    .. note::
       Requites the ``host`` command.
@@ -46,17 +46,17 @@ Running the following command:
 
 .. code-block:: console
 
-    # /var/ossec/bin/util.sh adddns ossec.net
+    # /var/ospatrol/bin/util.sh adddns ospatrol.net
 
-will add the folling to that system's ``ossec.conf``:
+will add the folling to that system's ``ospatrol.conf``:
 
 .. code-block:: console
 
-  <ossec_config>
+  <ospatrol_config>
      <localfile>
        <log_format>full_command</log_format>
-       <command>host -W 5 -t NS ossec.net; host -W 5 -t A ossec.net | sort</command>
+       <command>host -W 5 -t NS ospatrol.net; host -W 5 -t A ospatrol.net | sort</command>
      </localfile>
-   </ossec_config>
+   </ospatrol_config>
 
 

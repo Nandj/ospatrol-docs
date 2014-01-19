@@ -61,13 +61,13 @@ syscheck_control example usage
 Example 1: Getting a list of modified files for an agent
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To retrieve information about files that were monitored by OSSEC and modified after OSSEC was deployed, run :option:`syscheck_control -i <agent_id>`.
+To retrieve information about files that were monitored by OSPatrol and modified after OSPatrol was deployed, run :option:`syscheck_control -i <agent_id>`.
 
 .. code-block:: console 
 
-    # /var/ossec/bin/syscheck_control -i 002
+    # /var/ospatrol/bin/syscheck_control -i 002
 
-    Integrity changes for agent 'ossec-agent (002) - 192.168.1.86':
+    Integrity changes for agent 'ospatrol-agent (002) - 192.168.1.86':
 
     Changes for 2009 Dec 21:
     2009 Dec 21 13:52:40,0 - /etc/authorization
@@ -102,8 +102,8 @@ If you need to get more detailed information about a file that was modified you 
 
 - the time stamp when the file was added to the syscheck database
 - the integrity checking values when the file was added to the syscheck database
-- the time stamps when OSSEC detected a modification
-- the integrity checking values for every time OSSEC detected a modification.
+- the time stamps when OSPatrol detected a modification
+- the integrity checking values for every time OSPatrol detected a modification.
 
 The integrity checking values include
 
@@ -117,9 +117,9 @@ To retrieve this information, run :option:`syscheck_control -i <agent_id> -f <fi
 
 .. code-block:: console 
 
-    # /var/ossec/bin/syscheck_control -i 002 -f /etc/authorization
+    # /var/ospatrol/bin/syscheck_control -i 002 -f /etc/authorization
 
-    Integrity changes for agent 'ossec-agent (002) - 192.168.1.86':
+    Integrity changes for agent 'ospatrol-agent (002) - 192.168.1.86':
     Detailed information for entries matching: '/etc/authorization'
 
     2009 Dec 21 13:52:40,0 - /etc/authorization
@@ -149,7 +149,7 @@ To clear the syscheck database for a certain agent run the following command:
 
 .. code-block:: console
 
-    # /var/ossec/bin/syscheck_control -u 002
+    # /var/ospatrol/bin/syscheck_control -u 002
 
     ** Integrity check database updated.
 
@@ -157,9 +157,9 @@ To clear the syscheck database for a certain agent run the following command:
 
 .. code-block:: console
 
-    # /var/ossec/bin/syscheck_control -i 002
+    # /var/ospatrol/bin/syscheck_control -i 002
 
-    Integrity changes for agent 'ossec-agent (002) - 192.168.1.86':
+    Integrity changes for agent 'ospatrol-agent (002) - 192.168.1.86':
 
     ** No entries found.
 
@@ -167,7 +167,7 @@ To clear the database for all agents and the server run the following command:
 
 .. code-block:: console
 
-    # /var/ossec/bin/syscheck_control -u all
+    # /var/ospatrol/bin/syscheck_control -u all
 
     ** Integrity check database updated.
 
