@@ -1,14 +1,14 @@
-Correlating multiple snort IDS with ossec
+Correlating multiple snort IDS with ospatrol
 -----------------------------------------
 
-* Taken from `OSSEC blog <http://dcid.me/2006/12/correlating-multiple-snort-ids-with-ossec/>`_ by `Daniel Cid <http://www.dcid.me/>`_
+* Taken from `OSPatrol blog <http://dcid.me/2006/12/correlating-multiple-snort-ids-with-ospatrol/>`_ by `Daniel Cid <http://www.dcid.me/>`_
 
 
-I was asked recently what is the best way to correlate multiple `snort <http://www.snort.org>`_ events with OSSEC. 
-The idea would be to generate an ossec alert (by e-mail and possible an active response) 
+I was asked recently what is the best way to correlate multiple `snort <http://www.snort.org>`_ events with OSPatrol. 
+The idea would be to generate an ospatrol alert (by e-mail and possible an active response) 
 if a specific number of snort rules are fired from the same source IP address (in any order)..
 
-The easiest way to solve this is by creating a local ossec rule (inside ``local_rules.xml``) to match 
+The easiest way to solve this is by creating a local ospatrol rule (inside ``local_rules.xml``) to match 
 if any of the desired snort signatures are fired:
 
 .. code-block:: console
@@ -22,7 +22,7 @@ if any of the desired snort signatures are fired:
 Note that ``1:xx``, ``1:yy`` are the snort ids that you are interested to watch. We use the ``<if_sid>`` to 
 make sure that this rule is only tested if it is an IDS event (see rule 20101).
 
-Now, we create another ossec rule with a higher severity that will only be fired if the above rule
+Now, we create another ospatrol rule with a higher severity that will only be fired if the above rule
 (100015) is generated at least 4 times from the same source ip within 3 minutes (180 seconds):
 
 .. code-block:: console

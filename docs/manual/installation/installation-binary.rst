@@ -4,70 +4,70 @@ Binary Installation
 ===================
 
 On some systems a compatible compiler is not available, this leads to problems for the
-standard OSSEC install method. To work around this OSSEC supports being built on one
+standard OSPatrol install method. To work around this OSPatrol supports being built on one
 system and installed on another.
 
 .. note:: 
 
-    Due to the way OSSEC is built the system compiling OSSEC must be the same OS and
+    Due to the way OSPatrol is built the system compiling OSPatrol must be the same OS and
     CPU platform for this work correctly. 
 
 .. _manual-install-binary-build: 
 
-Compiling OSSEC for install on a second server 
+Compiling OSPatrol for install on a second server 
 ----------------------------------------------
 
-First download the OSSEC package corresponding to the version you want to 
+First download the OSPatrol package corresponding to the version you want to 
 install and unpack it (on the system with a compiler).
 
 .. code-block:: console 
 
-    # wget http://www.ossec.net/files/ossec-hids-latest.tar.gz  
-    # tar -zxvf ossec-hids-latest.tar.gz 
-    # rm ossec-hids-latest.tar.gz 
+    # wget http://www.ospatrol.net/files/ospatrol-hids-latest.tar.gz  
+    # tar -zxvf ospatrol-hids-latest.tar.gz 
+    # rm ospatrol-hids-latest.tar.gz 
 
     
-Enter in the source directory of the downloaded package and compile OSSEC. 
+Enter in the source directory of the downloaded package and compile OSPatrol. 
 
 .. code-block:: console 
 
-    # cd ossec-*/src
+    # cd ospatrol-*/src
     # make setagent                
     # make all
     # make build
     # cd ../..
 
-Modify ossec-hids-*/etc/preloaded-vars.conf to set BINARY_INSTALL to yes. 
+Modify ospatrol-hids-*/etc/preloaded-vars.conf to set BINARY_INSTALL to yes. 
 
 .. code-block:: console 
 
-    # echo "USER_BINARYINSTALL=\"y\"" >> ossec-hids*/etc/preloaded-vars.conf
+    # echo "USER_BINARYINSTALL=\"y\"" >> ospatrol-hids*/etc/preloaded-vars.conf
 
-Finally create an OSSEC package.
+Finally create an OSPatrol package.
 
 .. code-block:: console 
 
-    # tar -cvzf ossec-binary.tgz ossec-hids* 
+    # tar -cvzf ospatrol-binary.tgz ospatrol-hids* 
 
 .. _manual-install-binary-install: 
 
-Installation of the binary OSSEC package 
+Installation of the binary OSPatrol package 
 ----------------------------------------
 
-On the target system (that does not have a C compiler) download your ossec-binary.tgz 
+On the target system (that does not have a C compiler) download your ospatrol-binary.tgz 
 created in the setups above. 
 
 .. code-block:: console 
 
     # cd /tmp
-    # scp root@builder-server.example.com:/tmp/ossec-binary.tgz . 
+    # scp root@builder-server.example.com:/tmp/ospatrol-binary.tgz . 
 
 Complete the installation by unarchiving the binary package and running ./install.sh. 
 
 .. code-block:: console 
 
-    # tar xfvz ossec-binary.tgz 
-    # cd ossec-* 
+    # tar xfvz ospatrol-binary.tgz 
+    # cd ospatrol-* 
     # ./install.sh 
 
 After following the installation prompts your install will be complete.  

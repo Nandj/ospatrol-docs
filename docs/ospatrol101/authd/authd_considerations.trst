@@ -1,0 +1,8 @@
+.. _ospatrol_101_authd_considerations:
+
+
+Currently ``ospatrol-authd`` and ``agent-auth`` do not authenticate the other side. 
+The communication is encrypted, but there is nothing stopping an attacker with 
+access to the ospatrol-authd port from registering fake agents.
+
+

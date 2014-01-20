@@ -1,0 +1,28 @@
+.. _ospatrol_101_authd_scenario:
+
+
+On a Tuesday Adele's boss Steve asks her to add the new database servers to the OSPatrol infrastructure. Adele didn't want to go to each of the 12 systems to configure everything from scratch, so she decided to use ``ospatrol-authd`` to automatically register the new systems.
+
+Adele added an SSL certificate to the OSPatrol server by running:
+
+.. code-block:: console
+
+  # openssl genrsa -out /var/ospatrol/etc/sslmanager.key 2048
+  # openssl req -new -x509 -key /var/ospatrol/etc/sslmanager.key -out /var/ospatrol/etc/sslmanager.cert -days 365
+
+Then she ran ospatrol-authd to listen on port 2157:
+
+.. code-block:: console
+
+  # /var/ospatrol/bin/ospatrol-authd -p 2157
+
+Next Adele used the existing management infrastructure to install OSPatrol agents on each of the systems, and if ``/var/ospatrol/etc/client.keys`` did not exist to run /var/ospatrol/bin/agent-auth with the following command:
+
+.. code-block:: console
+
+  # /var/ospatrol/bin/agent-auth -m 192.168.29.46 -p 2157
+
+
+
+
+

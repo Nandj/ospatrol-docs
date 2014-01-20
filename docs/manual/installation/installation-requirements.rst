@@ -7,14 +7,14 @@ Installations requirements
 UNIX
 ==== 
 
-For UNIX systems, OSSEC just requires gcc and libc. However, 
+For UNIX systems, OSPatrol just requires gcc and libc. However, 
 you always have the option to pre-compile it on one system and 
 move the binaries to the final box. 
 
 Ubuntu
 ------
 
-On Ubuntu you will need the *build-essential* package in order to compile and install OSSEC. 
+On Ubuntu you will need the *build-essential* package in order to compile and install OSPatrol. 
 
 To install the package run the following command.  
 
@@ -48,11 +48,11 @@ Dash does not appear to support a full range of shell functions, and may display
  an error when trying to set the server's IP address on an agent system.
 The best solution may be to ignore the error, and configure the system manually.
 
-Do this by making sure something like the following information is in the agent's ossec.conf:
+Do this by making sure something like the following information is in the agent's ospatrol.conf:
 
 .. code-block:: console
 
-   <ossec_config>
+   <ospatrol_config>
      <client>
        <server-ip>SERVER'S IP</server-ip>
      </client>

@@ -6,7 +6,7 @@ By `Daniel B. Cid <http://www.dcid.me>`_
 For Unix Agents
 ^^^^^^^^^^^^^^^
 
-If you have multiple log files to be monitored by OSSEC and don't 
+If you have multiple log files to be monitored by OSPatrol and don't 
 want to add each one of them manually, you can configure them using 
 posix regular expressions. 
 
@@ -32,26 +32,26 @@ This tip can make large configurations much simpler.
 For Windows Agents
 ^^^^^^^^^^^^^^^^^^
 
-For the Windows agent, the built-in globing doesn't work. At time of writing (OSSEC version 1.5) you have to use a script to auto-generate ``ossec.conf`` if you want to monitor many log files without having to manually enter them. Here's an example batch file to get you started:
+For the Windows agent, the built-in globing doesn't work. At time of writing (OSPatrol version 1.5) you have to use a script to auto-generate ``ospatrol.conf`` if you want to monitor many log files without having to manually enter them. Here's an example batch file to get you started:
 
 .. code-block:: console
   @echo off
 
-  set targetfile="C:\Program Files\ossec-agent\ossec.conf"
+  set targetfile="C:\Program Files\ospatrol-agent\ospatrol.conf"
 
-  copy "%~dp0\ossec_template.conf" %targetfile%
+  copy "%~dp0\ospatrol_template.conf" %targetfile%
 
-  echo ^<ossec_config^> >> %targetfile%
+  echo ^<ospatrol_config^> >> %targetfile%
   echo. >> %targetfile%
   for /D %%l in (D:\Logs\W3SVC*) do echo ^<localfile^>^<location^>%%l\ex%%y%%m%%d.log^</location^>^<log_format^>iis^</log_format^>^</localfile^> >> %targetfile%
-  echo ^</ossec_config^> >> %targetfile%
-  net stop "OSSEC Hids"
-  net start "OSSEC Hids"
+  echo ^</ospatrol_config^> >> %targetfile%
+  net stop "OSPatrol Hids"
+  net start "OSPatrol Hids"
 
-Adjust the "for..in" globbing line as needed. In this example, I'm monitoring logs for multiple IIS sites which are all in D:\Logs. Save it into a file with a .bat extension and put it somewhere on your hard drive. Create a file named ``ossec_template.conf`` in the **`same directory** as the batch file. You can probably just copy your current ``ossec.conf`` for this file, as this script will only append to it. You can then set up a scheduled task to run the batch file to automatically keep your ossec.conf up to date. 
+Adjust the "for..in" globbing line as needed. In this example, I'm monitoring logs for multiple IIS sites which are all in D:\Logs. Save it into a file with a .bat extension and put it somewhere on your hard drive. Create a file named ``ospatrol_template.conf`` in the **`same directory** as the batch file. You can probably just copy your current ``ospatrol.conf`` for this file, as this script will only append to it. You can then set up a scheduled task to run the batch file to automatically keep your ospatrol.conf up to date. 
 
 .. note:
 
-  This will overwrite your ``ossec.conf`` every time it is run, so make sure that you make all your changes in your ``ossec_template.conf`` file.
+  This will overwrite your ``ospatrol.conf`` every time it is run, so make sure that you make all your changes in your ``ospatrol_template.conf`` file.
 
 

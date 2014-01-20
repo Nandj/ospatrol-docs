@@ -26,7 +26,7 @@ here (for disable-account.sh).
 
 - **name**: Used to link the command to the response.
 - **executable**: It must be a file (with exec permissions) inside 
-  “/var/ossec/active-response/bin”.
+  “/var/ospatrol/active-response/bin”.
   
   You don’t need to provide the whole path.
 - **expect**: The arguments this command is expecting (options are srcip and
@@ -66,7 +66,7 @@ severity) and here (for blocking on specific rules).
 - **location**: Where the command should be executed. You have four options:
 
     - **local**: on the agent that generated the event
-    - **server**: on the OSSEC server
+    - **server**: on the OSPatrol server
     - **defined-agent**: on a specific agent (when using this option, you need to set the agent_id to use)
     - **all**: or everywhere.
 
@@ -79,7 +79,7 @@ severity) and here (for blocking on specific rules).
 Active Response Tools
 ^^^^^^^^^^^^^^^^^^^^^
 
-By default, the ossec hids comes with the following pre-configured
+By default, the ospatrol hids comes with the following pre-configured
 active-response tools:
 
 - **host-deny.sh**: Adds an IP to the /etc/hosts.deny file (most Unix systems).
@@ -102,7 +102,7 @@ active-response tools:
         On PF, you need to create a table in your config and deny all the
         traffic to it. Add the following lines at the beginning of your
         rules and reload pf (pfctl -F all && pfctl -f /etc/pf.conf):
-        table <ossec_fwtable> persist #ossec_fwtable
+        table <ospatrol_fwtable> persist #ospatrol_fwtable
 
-        block in quick from <ossec_fwtable> to any
-        block out quick from any to <ossec_fwtable>
+        block in quick from <ospatrol_fwtable> to any
+        block out quick from any to <ospatrol_fwtable>

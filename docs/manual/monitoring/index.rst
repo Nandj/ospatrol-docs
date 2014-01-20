@@ -4,18 +4,18 @@
 Log monitoring/analysis 
 ======================= 
 
-Log Analysis (or log inspection) is done inside OSSEC by the logcollector and 
+Log Analysis (or log inspection) is done inside OSPatrol by the logcollector and 
 analysisd processes. The first one collects the events and the second one 
 analyzes (decodes, filters and classifies) them.
 
-It is done in real time, so as soon as an event is written OSSEC will process 
-them. OSSEC can read events from internal log files, from the Windows event 
+It is done in real time, so as soon as an event is written OSPatrol will process 
+them. OSPatrol can read events from internal log files, from the Windows event 
 log and also receive them directly via remote syslog.
 
 What is log analysis?
 ---------------------
 
-Inside OSSEC we call log analysis a LIDS, or log-based intrusion detection. The 
+Inside OSPatrol we call log analysis a LIDS, or log-based intrusion detection. The 
 goal is to detect attacks, misuse or system errors using the logs.
 
 LIDS - Log-based intrusion detection or security log analysis are the processes 
@@ -55,16 +55,16 @@ Quick Facts
 Configuration Options 
 ---------------------
 
-These options should be specified locally in each agent's ossec.conf file or the 
+These options should be specified locally in each agent's ospatrol.conf file or the 
 share agent.conf. Inside the ``<localfile>`` element, you can have the following 
 options. 
 
-.. include:: ../../syntax/ossec_config.localfile.trst 
+.. include:: ../../syntax/ospatrol_config.localfile.trst 
 
 Monitoring logs 
 --------------- 
 
-With in OSSEC their is two major methods for monitoring logs: file and process.  Each 
+With in OSPatrol their is two major methods for monitoring logs: file and process.  Each 
 method has it's own page and examples. 
 
 .. toctree::

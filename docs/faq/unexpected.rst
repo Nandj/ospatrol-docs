@@ -6,49 +6,49 @@ When the unexpected happens: FAQ
 .. contents:: 
     :local:
 
-How do I troubleshoot ossec?
+How do I troubleshoot ospatrol?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
-    If you are having problems with ossec, the first thing to do is to look at 
+    If you are having problems with ospatrol, the first thing to do is to look at 
     your logs. 
     
-    * Unix/Linux: The logs will be at /var/ossec/logs/ossec.log
-    * Windows: The logs are at  C:\Program Files\ossec-agent\ossec.log. 
+    * Unix/Linux: The logs will be at /var/ospatrol/logs/ospatrol.log
+    * Windows: The logs are at  C:\Program Files\ospatrol-agent\ospatrol.log. 
 
     If by looking at them, you can't find out the error, we suggest you to send an 
     e-mail to one of our mailing lists with the following information: 
 
-    * OSSEC version number.
+    * OSPatrol version number.
 
         Run the following to get the version installation. 
 
         .. code-block:: console
 
-            # /var/ossec/bin/ossec-analysisd -V
+            # /var/ospatrol/bin/ospatrol-analysisd -V
 
-    * Content of /etc/ossec-init.conf
-    * Content of /var/ossec/etc/ossec.conf or (or C:\Program Files\ossec-agent\ossec.log if Windows)
-    * Content of /var/ossec/logs/ossec.log 
+    * Content of /etc/ospatrol-init.conf
+    * Content of /var/ospatrol/etc/ospatrol.conf or (or C:\Program Files\ospatrol-agent\ospatrol.log if Windows)
+    * Content of /var/ospatrol/logs/ospatrol.log 
     * Operating system name/version (uname -a if Unix)
     * Any other relevant information. 
 
 
 
-How to debug ossec?
+How to debug ospatrol?
 ^^^^^^^^^^^^^^^^^^^^
 
     .. warning::
 
-        Only read this section if you tried to troubleshoot ossec already, but 
+        Only read this section if you tried to troubleshoot ospatrol already, but 
         didn't have lucky solving your problem.  Most of the users will never need 
         to enable debugging, since it can significantly hurt performance. 
 
     **Debug Logging** 
 
-    You can also enable debugging mode on ossec to extract more data about 
+    You can also enable debugging mode on ospatrol to extract more data about 
     what is going on. To do so, you will need to modify the file 
-    /var/ossec/etc/internal_options.conf (or 
-    C:\\Program Files\\ossec-agent\\internal_options.conf on Windows) and change 
+    /var/ospatrol/etc/internal_options.conf (or 
+    C:\\Program Files\\ospatrol-agent\\internal_options.conf on Windows) and change 
     the debug level from the default "0" to "1" or "2". 
 
     For example, if you wish to debug your windows agent, just change the option 
@@ -79,13 +79,13 @@ How to debug ossec?
         # Unix agentd
         agent.debug=0
 
-    If this is on an OSSEC server you can enable debug by running:
+    If this is on an OSPatrol server you can enable debug by running:
 
     .. code-block:: console
 
-       # /var/ossec/bin/ossec-control enable debug
+       # /var/ospatrol/bin/ospatrol-control enable debug
 
-    Enable debug mode and restart the OSSEC processes to view more verbose logs.
+    Enable debug mode and restart the OSPatrol processes to view more verbose logs.
 
     **Getting more log data** 
 
@@ -108,7 +108,7 @@ How to debug ossec?
       in the log entry and the_string is the name of the string variable to send to the log.
     
     With some calls to verbose, recompile and replace the stock binary with your edited 
-    one. Restart ossec and tail the log.
+    one. Restart ospatrol and tail the log.
 
 .. _faq_unexpected_comm:
 
@@ -128,10 +128,10 @@ The communication between my agent and the server is not working. What to do?
 
     .. code-block:: console 
 
-        2007/04/19 12:42:54 ossec-agentd(4101): Waiting for server reply (not started).
-        2007/04/19 12:43:10 ossec-agentd(4101): Waiting for server reply (not started).
-        2007/04/19 12:43:41 ossec-agentd(4101): Waiting for server reply (not started).
-        2007/04/19 12:44:27 ossec-agentd(4101): Waiting for server reply (not started).
+        2007/04/19 12:42:54 ospatrol-agentd(4101): Waiting for server reply (not started).
+        2007/04/19 12:43:10 ospatrol-agentd(4101): Waiting for server reply (not started).
+        2007/04/19 12:43:41 ospatrol-agentd(4101): Waiting for server reply (not started).
+        2007/04/19 12:44:27 ospatrol-agentd(4101): Waiting for server reply (not started).
 
     And nothing on the server log, you probably have a firewall between the two 
     devices. Make sure to open port 1514 UDP between them (keeping state --the 
@@ -141,7 +141,7 @@ The communication between my agent and the server is not working. What to do?
 
         The way the agent/server communication works is that the agent starts a 
         connection to the server using any random high port. So, the only port that 
-        OSSEC opens is in the server side (port 1514 UDP). It works similar to DNS, 
+        OSPatrol opens is in the server side (port 1514 UDP). It works similar to DNS, 
         where the DNS client connects to UDP port 53 and expects a reply back.
 
     **Wrong authentication keys configured (you imported a key from a different agent).**
@@ -151,8 +151,8 @@ The communication between my agent and the server is not working. What to do?
 
     .. code-block:: console 
 
-        2007/05/23 09:27:35 ossec-remoted(1403): Incorrectly formated message from 'xxx.xxx.xxx.xxx'.
-        2007/05/23 09:27:35 ossec-remoted(1403): Incorrectly formated message from 'xxx.xxx.xxx.xxx'.''
+        2007/05/23 09:27:35 ospatrol-remoted(1403): Incorrectly formated message from 'xxx.xxx.xxx.xxx'.
+        2007/05/23 09:27:35 ospatrol-remoted(1403): Incorrectly formated message from 'xxx.xxx.xxx.xxx'.''
 
     **The IP address you configured the agent is different from what the server is seeing.**
 
@@ -165,7 +165,7 @@ The communication between my agent and the server is not working. What to do?
 
     #. 'Stop the server and the agent.'
         
-        *  Make sure they are really stopped (ps on Unix or sc query ossecsvc on Windows)
+        *  Make sure they are really stopped (ps on Unix or sc query ospatrolsvc on Windows)
 
     #. Run the manage-agents tool on the server and remove the agent.
     #. Still on the server, add the agent using manage-agents. Make sure the IP is correct.
@@ -199,37 +199,37 @@ How to fix it:
 What does "1210 - Queue not accessible?" mean?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Check queue/ossec/queue
+Check queue/ospatrol/queue
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If you have logs similar to the following in ``/var/ossec/queue/ossec/queue``::
+If you have logs similar to the following in ``/var/ospatrol/queue/ospatrol/queue``::
 
-    2008/04/29 15:40:39 ossec-syscheckd(1210): ERROR: Queue '/var/ossec/queue/ossec/queue' not accessible: 'Connection refused'.
-    2008/04/29 15:40:39 ossec-rootcheck(1210): ERROR: Queue '/var/ossec/queue/ossec/queue' not accessible: 'Connection refused'.
-    2008/04/29 15:40:45 ossec-logcollector(1210): ERROR: Queue '/var/ossec/queue/ossec/queue' not accessible: 'Connection refused'.
-    2008/04/29 15:40:45 ossec-logcollector(1211): ERROR: Unable to access queue: '/var/ossec/queue/ossec/queue'. Giving up..
-    2008/04/29 15:41:00 ossec-syscheckd(1210): ERROR: Queue '/var/ossec/queue/ossec/queue' not accessible: 'Connection refused'.
-    2008/04/29 15:41:00 ossec-rootcheck(1211): ERROR: Unable to access queue: '/var/ossec/queue/ossec/queue'. Giving up.. 
+    2008/04/29 15:40:39 ospatrol-syscheckd(1210): ERROR: Queue '/var/ospatrol/queue/ospatrol/queue' not accessible: 'Connection refused'.
+    2008/04/29 15:40:39 ospatrol-rootcheck(1210): ERROR: Queue '/var/ospatrol/queue/ospatrol/queue' not accessible: 'Connection refused'.
+    2008/04/29 15:40:45 ospatrol-logcollector(1210): ERROR: Queue '/var/ospatrol/queue/ospatrol/queue' not accessible: 'Connection refused'.
+    2008/04/29 15:40:45 ospatrol-logcollector(1211): ERROR: Unable to access queue: '/var/ospatrol/queue/ospatrol/queue'. Giving up..
+    2008/04/29 15:41:00 ospatrol-syscheckd(1210): ERROR: Queue '/var/ospatrol/queue/ospatrol/queue' not accessible: 'Connection refused'.
+    2008/04/29 15:41:00 ospatrol-rootcheck(1211): ERROR: Unable to access queue: '/var/ospatrol/queue/ospatrol/queue'. Giving up.. 
 
-It means that :ref:`ossec-analysisd` is not running for some reason.
+It means that :ref:`ospatrol-analysisd` is not running for some reason.
 
 **The main reasons for this to happen are:**
 
-- :ref:`ossec-analysisd` didn't start properly. Look at the logs for any error from it.
-- :ref:`ossec-analysisd` didn't start at all. There is a bug in the init scripts that 
+- :ref:`ospatrol-analysisd` didn't start properly. Look at the logs for any error from it.
+- :ref:`ospatrol-analysisd` didn't start at all. There is a bug in the init scripts that 
   during system reboot, it may not start if the PID is already in use (we are working 
   to fix it).
-- :ref:`ossec-analysisd` cannot access ``/queue/fts/fts-queue``. Look for the error message ``ossec-analysisd(1103): ERROR: Unable to open file '/queue/fts/fts-queue'.`` This can be fixed by ensuring that the ossec user owns ``/var/ossec/queue/fts/fts-queue``.
+- :ref:`ospatrol-analysisd` cannot access ``/queue/fts/fts-queue``. Look for the error message ``ospatrol-analysisd(1103): ERROR: Unable to open file '/queue/fts/fts-queue'.`` This can be fixed by ensuring that the ospatrol user owns ``/var/ospatrol/queue/fts/fts-queue``.
 
 **How to fix it:** 
 
-Stop OSSEC and start it back again:
+Stop OSPatrol and start it back again:
 
 .. code-block:: console 
 
-    # /var/ossec/bin/ossec-control stop
-    (you can also check at /var/ossec/var/run that there is not PID file in there)
-    # /var/ossec/bin/ossec-control start
+    # /var/ospatrol/bin/ospatrol-control stop
+    (you can also check at /var/ospatrol/var/run that there is not PID file in there)
+    # /var/ospatrol/bin/ospatrol-control start
 
 If there is any configuration error, fix it. 
 
@@ -237,20 +237,20 @@ If there is any configuration error, fix it.
 Check queue/alerts/ar 
 ~~~~~~~~~~~~~~~~~~~~~
 
-If you have logs similar to the following in ``/var/ossec/queue/alerts/ar``::
+If you have logs similar to the following in ``/var/ospatrol/queue/alerts/ar``::
 
-    2009/02/17 12:03:04 ossec-analysisd(1210): ERROR: Queue '/queue/alerts/ar' not accessible: 'Connection refused'.
-    2009/02/17 12:03:04 ossec-analysisd(1301): ERROR: Unable to connect to active response queue.
+    2009/02/17 12:03:04 ospatrol-analysisd(1210): ERROR: Queue '/queue/alerts/ar' not accessible: 'Connection refused'.
+    2009/02/17 12:03:04 ospatrol-analysisd(1301): ERROR: Unable to connect to active response queue.
     
 It means that there is nothing listening on the other end of the socket the 
-:ref:`ossec-analysisd` deamon would want to write to. This can happen in an ossec 
+:ref:`ospatrol-analysisd` deamon would want to write to. This can happen in an ospatrol 
 server installation. The deamon that should be listening on this socket is 
-:ref:`ossec-remoted`.  
+:ref:`ospatrol-remoted`.  
 
 **How to fix it:** 
 
-Add an OSSEC client (agent) with the :ref:`manage_agents` utility on both agent 
-and server. Then restart OSSEC. :ref:`ossec-remoted` should now be listening on 
+Add an OSPatrol client (agent) with the :ref:`manage_agents` utility on both agent 
+and server. Then restart OSPatrol. :ref:`ospatrol-remoted` should now be listening on 
 the socket.
 
 
@@ -258,24 +258,24 @@ Remote commands are not accepted from the manager. Ignoring it on the agent.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This error message is caused by ``command`` or ``full_command`` log types in the agent.conf.
-Originally OSSEC supported running commands from the agent.conf by default. Thie was later changed as a security 
+Originally OSPatrol supported running commands from the agent.conf by default. Thie was later changed as a security 
 precaution due to the commands being run as root. When a command is encountered on an agent in the agent.conf 
 this error will be produced and the agent may not fully start. This error may also accompany the above error 
 message:
 
 .. code-block:: console
 
-    ERROR: Configuration error at '/var/ossec-agent/etc/shared/agent.conf'. Exiting.
+    ERROR: Configuration error at '/var/ospatrol-agent/etc/shared/agent.conf'. Exiting.
 
 Errors when dealing with multiple agents 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you have hundreds (or even thousands) of agents, OSSEC may not work 
+When you have hundreds (or even thousands) of agents, OSPatrol may not work 
 properly by default. There are a few changes that you will need to do:
 
 **Increase maximum number of allowed agents**
 
-To increase the number of agents, before you install (or update OSSEC), just do:
+To increase the number of agents, before you install (or update OSPatrol), just do:
 
 .. code-block:: console 
 
@@ -300,27 +300,27 @@ A few commands you should try are (to increase to 2048):
 Fixing Duplicate Errors
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Ossec agents and server keep a counter of each message sent and received in files in .../ossec/queue/rids.
-This is a technique to prevent replay attacks. If the counters between agent and server don't match you'll see errors like this in the agents ossec.log file:
+Ossec agents and server keep a counter of each message sent and received in files in .../ospatrol/queue/rids.
+This is a technique to prevent replay attacks. If the counters between agent and server don't match you'll see errors like this in the agents ospatrol.log file:
 
 .. code-block:: console
 
-    2007/10/24 11:19:21 ossec-agentd: Duplicate error:  global: 12, local: 3456, saved global: 78, saved local: 91011
-    2007/10/24 11:19:21 ossec-agentd(<pid>): Duplicated counter for '<host name>'.
-    2007/10/24 11:19:21 ossec-agentd(<pid>): Problem receiving message from www.xxx.yyy.zzz.
+    2007/10/24 11:19:21 ospatrol-agentd: Duplicate error:  global: 12, local: 3456, saved global: 78, saved local: 91011
+    2007/10/24 11:19:21 ospatrol-agentd(<pid>): Duplicated counter for '<host name>'.
+    2007/10/24 11:19:21 ospatrol-agentd(<pid>): Problem receiving message from www.xxx.yyy.zzz.
 
-This normally happens when you restore the ossec files from a backup or you reinstall server or agents without performing an upgrade, this can also be caused by duplicate agent ID's.
+This normally happens when you restore the ospatrol files from a backup or you reinstall server or agents without performing an upgrade, this can also be caused by duplicate agent ID's.
 The fix for this problem is:
 
 1. On every agent:
  
-  #. stop ossec
+  #. stop ospatrol
 
-  #. go to: .../ossec/queue/rids (or ossec-agent/rids on Windows) and remove every file in there.
+  #. go to: .../ospatrol/queue/rids (or ospatrol-agent/rids on Windows) and remove every file in there.
 
 2. Go to the server:
 
-  #. Stop ossec
+  #. Stop ospatrol
 
   #. Remove the rids file with the same name as the agent id that is reporting errors.
  
@@ -329,42 +329,42 @@ The fix for this problem is:
 4. Restart the agents.
 
 To avoid this problem from ever happening again, make sure to:
-    * Always use the update option (when updating). Do not remove and reinstall the ossec server, unless you plan to do the same for all agents.
+    * Always use the update option (when updating). Do not remove and reinstall the ospatrol server, unless you plan to do the same for all agents.
     * Do not re-use the same agent key between multiple agents or the same agent key after you remove/re-install an agent. If you use the "update" options everything should just work.
 
 
 Agent won't connect to the manager or the agent always shows never connected
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following log messages may appear in the ``ossec.log`` file on an agent when it is having issues connecting to a manager:
+The following log messages may appear in the ``ospatrol.log`` file on an agent when it is having issues connecting to a manager:
 
 .. code-block:: console
 
-    2011/11/13 18:05:13 ossec-agent: WARN: Process locked. Waiting for permission...
-    2011/11/13 18:05:24 ossec-agent(4101): WARN: Waiting for server reply (not started). Tried: '10.10.134.241'.
-    2011/11/13 18:05:26 ossec-agent: INFO: Trying to connect to server (10.10.134.241:1514).
-    2011/11/13 18:05:26 ossec-agent: INFO: Using IPv4 for: 10.10.134.241 .
-    2011/11/13 18:05:47 ossec-agent(4101): WARN: Waiting for server reply (not started). Tried: '10.10.134.241'.
+    2011/11/13 18:05:13 ospatrol-agent: WARN: Process locked. Waiting for permission...
+    2011/11/13 18:05:24 ospatrol-agent(4101): WARN: Waiting for server reply (not started). Tried: '10.10.134.241'.
+    2011/11/13 18:05:26 ospatrol-agent: INFO: Trying to connect to server (10.10.134.241:1514).
+    2011/11/13 18:05:26 ospatrol-agent: INFO: Using IPv4 for: 10.10.134.241 .
+    2011/11/13 18:05:47 ospatrol-agent(4101): WARN: Waiting for server reply (not started). Tried: '10.10.134.241'.
 
-If the agent's packets are making it to the manager, the manager will also include error messages in its ``ossec.log`` related to that agent. Some possible issues:
+If the agent's packets are making it to the manager, the manager will also include error messages in its ``ospatrol.log`` related to that agent. Some possible issues:
 
-* The agent may not be using the correct IP address. Some systems with multiple IP addresses may not choose the correct one to communicate with the OSSEC manager. Using ``any`` or a CIDR address (192.168.1.0/24) for the agent may be one solution, and adjusting the system's route settings is another.
+* The agent may not be using the correct IP address. Some systems with multiple IP addresses may not choose the correct one to communicate with the OSPatrol manager. Using ``any`` or a CIDR address (192.168.1.0/24) for the agent may be one solution, and adjusting the system's route settings is another.
 
 * Every agent must be using a unique key. If 2 agents look like they're coming from the same IP (possibly from a NAT gateway), then ``any`` or the CIDR address should be used to identify them on the manager.
 
-* There may be a firewall blocking the OSSEC traffic, udp 1514 should be allowed to and from the manager.
+* There may be a firewall blocking the OSPatrol traffic, udp 1514 should be allowed to and from the manager.
 
-* UAC may be blocking the OSSEC service from communicating with the manager on Windows 7.
+* UAC may be blocking the OSPatrol service from communicating with the manager on Windows 7.
 
 I am seeing high CPU utilization on a Windows agent
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some OSSEC HIDS users who have deployed the Windows agent have experienced situations where the windows OSSEC agent causes high CPU utilization. In some cases, this may be due to syscheck having to do integrity checking on a large number of files and the frequency with which this is done. The high CPU utilization could also take place when the OSSEC agent has to analyze Windows Event logs with very large numbers of generated events.
+Some OSPatrol HIDS users who have deployed the Windows agent have experienced situations where the windows OSPatrol agent causes high CPU utilization. In some cases, this may be due to syscheck having to do integrity checking on a large number of files and the frequency with which this is done. The high CPU utilization could also take place when the OSPatrol agent has to analyze Windows Event logs with very large numbers of generated events.
 
 A clue to what may be happening are alerts like these:
 
 .. code-block:: console
-  OSSEC HIDS Notification.
+  OSPatrol HIDS Notification.
   2006 Oct 24 03:18:07
 
   Received From: (ACME-5) 10.23.54.40->WinEvtLog
@@ -377,6 +377,6 @@ A clue to what may be happening are alerts like these:
 
   --END OF NOTIFICATION
 
-The above alert indicates the condition where a large number of events are being generated in the Windows event logs. In Windows, setting the Windows audit policy to `Audit Object Access <http://technet2.microsoft.com/WindowsServer/en/library/50fdb7bc-7dae-4dcd-8591-382aeff2ea791033.mspx?mfr=true>`_ or `Audit Process Tracking <http://technet2.microsoft.com/WindowsServer/en/library/50fdb7bc-7dae-4dcd-8591-382aeff2ea791033.mspx?mfr=true>`_ can cause the generation of many event log entries. This gives the OSSEC agent much more work to do in log analysis, and thus causes the consumption of much more CPU cycles. To reduce the CPU utilization in this case, the solution is to disable auditing of object access and/or process tracking. Typically, these audit settings aren't required except for debugging purposes, or situations in which you absolutely have to track everything.
+The above alert indicates the condition where a large number of events are being generated in the Windows event logs. In Windows, setting the Windows audit policy to `Audit Object Access <http://technet2.microsoft.com/WindowsServer/en/library/50fdb7bc-7dae-4dcd-8591-382aeff2ea791033.mspx?mfr=true>`_ or `Audit Process Tracking <http://technet2.microsoft.com/WindowsServer/en/library/50fdb7bc-7dae-4dcd-8591-382aeff2ea791033.mspx?mfr=true>`_ can cause the generation of many event log entries. This gives the OSPatrol agent much more work to do in log analysis, and thus causes the consumption of much more CPU cycles. To reduce the CPU utilization in this case, the solution is to disable auditing of object access and/or process tracking. Typically, these audit settings aren't required except for debugging purposes, or situations in which you absolutely have to track everything.
 
 

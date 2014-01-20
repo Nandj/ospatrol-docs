@@ -7,7 +7,7 @@ File Monitoring
 Overview 
 --------
 
-OSSEC has a process named ossec-logcollector that monitors log files for new events, and forwards them to other processes for analysis. The configuration of ossec-logcollector is done in ``/var/ossec/etc/ossec.conf``.
+OSPatrol has a process named ospatrol-logcollector that monitors log files for new events, and forwards them to other processes for analysis. The configuration of ospatrol-logcollector is done in ``/var/ospatrol/etc/ospatrol.conf``.
 
 
 Configuration examples
@@ -43,7 +43,7 @@ and the location is the name of the event log. Example:
 Multiple Files Example 
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To check multiple files, OSSEC supports posix regular expressions. 
+To check multiple files, OSPatrol supports posix regular expressions. 
 For example, to analyze every file that ends with a .log inside the /var/log directory, 
 use the following configuration:
 
@@ -78,7 +78,7 @@ IIS Logs Example
 
 Support for IIS (5 and 6) is available for the NCSA format (web only) and the W3C 
 extended format (for Web, FTP and SMTP). By default, the installation scripts will 
-attempt to configure OSSEC to monitor the first virtual hosts for web (W3SVC1 to 
+attempt to configure OSPatrol to monitor the first virtual hosts for web (W3SVC1 to 
 W3SVC254), ftp (MSFTPSVC1 to MSFTPSVC254) and smtp (SMTPSVC1 to SMTPSVC254). 
 To monitor any other file you need to add a new entry manually.
 

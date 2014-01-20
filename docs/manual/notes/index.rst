@@ -19,7 +19,7 @@ Misc. Notes
     manager_backup
     multiple_files
     nmap_correlation
-    ossec_syslog
+    ospatrol_syslog
     pix_configuration
     portscan_detection
     rule_groups

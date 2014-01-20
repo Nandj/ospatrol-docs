@@ -7,29 +7,29 @@ These are the two locations where the keys are saved for all the agents.
 
 .. code-block:: console
 
-  /var/ossec/etc/client.keys
-  /var/ossec/queue/rids/ 
+  /var/ospatrol/etc/client.keys
+  /var/ospatrol/queue/rids/ 
 
 These are the configuration files you may want to keep 
 
 .. code-block:: console
-  /var/ossec/etc/*.conf
-  /var/ossec/rules
-  /var/ossec/etc/*.xml
-  /var/ossec/etc/shared/agent.conf
+  /var/ospatrol/etc/*.conf
+  /var/ospatrol/rules
+  /var/ospatrol/etc/*.xml
+  /var/ospatrol/etc/shared/agent.conf
 
 
 These are the databases where we store data for the agents.
 
 .. code-block:: console
 
-  /var/ossec/queue/syscheck
-  /var/ossec/queue/rootcheck
-  /var/ossec/queue/fts
-  /var/ossec/queue/agentless
+  /var/ospatrol/queue/syscheck
+  /var/ospatrol/queue/rootcheck
+  /var/ospatrol/queue/fts
+  /var/ospatrol/queue/agentless
 
 Logs stored if they are needed.
 
 .. code-block:: console
 
-  /var/ossec/logs
+  /var/ospatrol/logs

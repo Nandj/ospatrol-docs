@@ -27,12 +27,12 @@ NAT Example
 ~~~~~~~~~~~
 
 The same applies to systems behind a NAT device. 
-The OSSEC server will see all agents behind the NAT as if they have the 
+The OSPatrol server will see all agents behind the NAT as if they have the 
 same IP address.
 
 For example, you have systems 192.168.1.2, 192.168.1.3 and 
 192.168.1.4 behind a nat server that connects to network 10.1.1.0/24 with 
-the ossec server on it. 
+the ospatrol server on it. 
 
 In this case, you need to config the agents as if their IP was 10.1.1.0/24, 
 because this is the IP that the server is seeing (not their original IP).

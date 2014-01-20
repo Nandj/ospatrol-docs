@@ -29,7 +29,7 @@ How do you monitor for usb storage?
 
       <rule id="140125" level="7">
         <if_sid>530</if_sid>
-        <match>ossec: output: 'usb-check':</match>
+        <match>ospatrol: output: 'usb-check':</match>
         <check_diff />
         <description>New USB device connected</description>
       </rule>
@@ -38,9 +38,9 @@ How do you monitor for usb storage?
     The alert will contain a diff of the registry entry before the USB device was inserted and after.
 
 
-    Originally from: 'http://dcid.me/2010/03/detecting-usb-storage-usage-with-ossec/'
+    Originally from: 'http://dcid.me/2010/03/detecting-usb-storage-usage-with-ospatrol/'
 
-    Additional data from: 'http://blog.rootshell.be/2010/03/15/detecting-usb-storage-usage-with-ossec/'
+    Additional data from: 'http://blog.rootshell.be/2010/03/15/detecting-usb-storage-usage-with-ospatrol/'
 
 .. _grouped_email_alerts:
 
@@ -48,10 +48,10 @@ Why do I see alerts for agent2 in an email about agent1?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     When an email is being prepared alerts will be grouped together. The only real criteria for grouping alerts together is the timeframe.
-    To prevent alerts from being grouped together you can set ``maild.groupping`` to 0 in ``/var/ossec/etc/internal_options.conf``.
-    If this is set, alerts will be sent out individually. By default OSSEC will only send 12 emails per hour.
-    To increase this limit, modify or add the <email_maxperhour> setting in the ``<global>`` section of the ``ossec.conf``.
-    (see: `email_maxperhour <../syntax/head_ossec_config.global.html#element-email_maxperhour>`_ .)
+    To prevent alerts from being grouped together you can set ``maild.groupping`` to 0 in ``/var/ospatrol/etc/internal_options.conf``.
+    If this is set, alerts will be sent out individually. By default OSPatrol will only send 12 emails per hour.
+    To increase this limit, modify or add the <email_maxperhour> setting in the ``<global>`` section of the ``ospatrol.conf``.
+    (see: `email_maxperhour <../syntax/head_ospatrol_config.global.html#element-email_maxperhour>`_ .)
 
 
 
@@ -86,7 +86,7 @@ How do I ignore rule 1002?
 I set the <email_alert_level> to 10, why do I keep seeing rules with lower levels?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Some rules have an option set to force OSSEC into sending an alert email. This option is ``<options>alert_by_email</options>``. 
+   Some rules have an option set to force OSPatrol into sending an alert email. This option is ``<options>alert_by_email</options>``. 
    One of these rules is 1002. To ignore these rules you will have to create a rule to specifically ignore it,
    or overwrite the rule without the ``alert_by_email`` option. 
 

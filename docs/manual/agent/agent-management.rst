@@ -4,27 +4,27 @@
 Managing Agents 
 ===============
 
-To add an agent to an OSSEC manager with :ref:`manage_agents` you need to follow the steps below.
+To add an agent to an OSPatrol manager with :ref:`manage_agents` you need to follow the steps below.
 
-1. Run manage_agents on the OSSEC server.
+1. Run manage_agents on the OSPatrol server.
 2. Add an agent.
 3. Extract the key for the agent.
 4. Copy that key to the agent.
 5. Run manage_agents on the agent.
 6. Import the key copied from the manager.
-7. Restart the manager's OSSEC processes.
+7. Restart the manager's OSPatrol processes.
 8. Start the agent.
 
 
-manage_agents on the OSSEC server
+manage_agents on the OSPatrol server
 ---------------------------------
 
 The server version of manage_agents provides an interface to:
 
-- add an OSSEC agent to the OSSEC server
-- extract the key for an agent already added to the OSSEC server
-- remove an agent from the OSSEC server
-- list all agents already added to the OSSEC server.
+- add an OSPatrol agent to the OSPatrol server
+- extract the key for an agent already added to the OSPatrol server
+- remove an agent from the OSPatrol server
+- list all agents already added to the OSPatrol server.
 
 
 Running manage_agents and start screen
@@ -37,14 +37,14 @@ Run ``manage_agents``:
 
 .. code-block:: console
 
-    # /var/ossec/bin/manage_agents
+    # /var/ospatrol/bin/manage_agents
 
 The manage_agents menu:
 
 .. code-block:: console
 
     ****************************************
-    * OSSEC HIDS v2.5-SNP-100809 Agent manager.     *
+    * OSPatrol HIDS v2.5-SNP-100809 Agent manager.     *
     * The following options are available: *
     ****************************************
        (A)dd an agent (A).
@@ -93,7 +93,7 @@ network range or ``any`` is preferable when the IP of the agent may change frequ
 The last information you will be asked for is the ID you want to assign to the agent. 
 :ref:`manage_agents` will suggest a value for the ID. This value should be the lowest positive 
 number that is not already assigned to another agent. The ID 000 is assigned to the 
-OSSEC server. To accept the suggestion, simply press ENTER. To choose another value, 
+OSPatrol server. To accept the suggestion, simply press ENTER. To choose another value, 
 type it in and press ENTER.
 
 .. code-block:: console
@@ -111,12 +111,12 @@ As the final step in creating an agent, you have to confirm adding the agent:
     Confirm adding it?(y/n): y
     Agent added.
 
-After that :ref:`manage_agents` appends the agent information to /var/ossec/etc/client.keys 
+After that :ref:`manage_agents` appends the agent information to /var/ospatrol/etc/client.keys 
 and goes back to the start screen.
 
 .. warning::
 
-   If this is the first agent added to this server, the server's OSSEC processes should be restarted using ``/var/ossec/bin/ossec-control restart``.
+   If this is the first agent added to this server, the server's OSPatrol processes should be restarted using ``/var/ospatrol/bin/ospatrol-control restart``.
 
 
 Extracting the key for an agent
@@ -149,7 +149,7 @@ and includes information about the agent. This string can be added to the agent 
 Removing an agent
 -----------------
 
-If you want to remove an OSSEC agent from the server, use the ``r`` option in the :ref:`manage_agents`
+If you want to remove an OSPatrol agent from the server, use the ``r`` option in the :ref:`manage_agents`
 start screen. You will be given a list of all agents already added to the server. To remove 
 an agent, simply type in the ID of the agent, press enter, and finally confirm the deletion. 
 It is important to note that you have to enter all digits of the ID.
@@ -165,12 +165,12 @@ It is important to note that you have to enter all digits of the ID.
     Agent '001' removed.
 
 ``manage_agents`` then invalidates the agent information in 
-``/var/ossec/etc/client.keys``. Only the values for ID and the key are kept to 
+``/var/ospatrol/etc/client.keys``. Only the values for ID and the key are kept to 
 avoid conflicts when adding agents. The deleted agent can no longer 
-communicate with the OSSEC server.
+communicate with the OSPatrol server.
 
 
-manage_agents on OSSEC agents
+manage_agents on OSPatrol agents
 ------------------------------
 
 The agent version provides an interface for importing authentication keys.
@@ -178,7 +178,7 @@ The agent version provides an interface for importing authentication keys.
 .. code-block:: console
 
     ****************************************
-    * OSSEC HIDS v2.5-SNP-100809 Agent manager.     *
+    * OSPatrol HIDS v2.5-SNP-100809 Agent manager.     *
     * The following options are available: *
     ****************************************
        (I)mport key from the server (I).
