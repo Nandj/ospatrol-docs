@@ -7,7 +7,7 @@ Manual
     :maxdepth: 2
 
     non-technical-overview
-    ossec-architecture
+    ospatrol-architecture
     supported-systems
     installation/index
     agent/index

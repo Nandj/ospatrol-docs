@@ -13,7 +13,7 @@ need additional functionality not present in there.
 How do they work?
 ^^^^^^^^^^^^^^^^^
 
-Inside the OSSEC package you will find the directory ``src/analysisd/compiled_rules/`` , with the
+Inside the OSPatrol package you will find the directory ``src/analysisd/compiled_rules/`` , with the
 default compiled rules. To see a list of rules, run the command (inside that directory):
 
 
@@ -90,12 +90,12 @@ After that, register your function:
 
    $ ./register_rule.sh add myosrule_check_url_size1024
 
-You can also save it (if you have ossec installed) so that during the next upgrade it will reuse them:
+You can also save it (if you have ospatrol installed) so that during the next upgrade it will reuse them:
 
 .. code-block:: console
 
    $ ./register_rule.sh save
-   *Save completed at /var/ossec/compiled_rules/
+   *Save completed at /var/ospatrol/compiled_rules/
 
 
 

@@ -1,8 +1,8 @@
-.. _ossec_101_output_email:
+.. _ospatrol_101_output_email:
 
 
 
-OSSEC 101: email output
+OSPatrol 101: email output
 -------------------------
 
 

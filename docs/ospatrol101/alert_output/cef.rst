@@ -1,8 +1,8 @@
-.. _ossec_101_output_cef:
+.. _ospatrol_101_output_cef:
 
 
 
-OSSEC 101: cef output
+OSPatrol 101: cef output
 ---------------------
 
 

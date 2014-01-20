@@ -4,7 +4,7 @@ Creating Customized Active Responses
 *by `Daniel Cid <http://www.dcid.me/>`_*
 
 
-OSSEC by default comes with a few active response scripts, but if you ever need to expand them, this 
+OSPatrol by default comes with a few active response scripts, but if you ever need to expand them, this 
 tutorial can be of help.
 
 As always, learning via examples is easier and faster. We will write a simple active response script to 
@@ -14,7 +14,7 @@ e-mail the alert to a specific address.
 Creating the command:
 ^^^^^^^^^^^^^^^^^^^^^
 
-The first thing we need to do is to create a new "command" entry in the ossec config.
+The first thing we need to do is to create a new "command" entry in the ospatrol config.
 .. code-block:: console
 
   <command>
@@ -26,14 +26,14 @@ The first thing we need to do is to create a new "command" entry in the ossec co
 
 Since our script does not need a timeout, we set it to no. We also don't expect any input (like srcip or 
 username), so we leave the "expect" tag empty. In the executable tag, we specify the name of the script 
-to be executed (it must be inside ``/var/ossec/active-response/bin/`` ).
+to be executed (it must be inside ``/var/ospatrol/active-response/bin/`` ).
 
 *If you do need a srcip or username, just add it, eg: ``<expect>srcip</expect>``*
 
 
 ===2- Configure the Active response===
 
-Next, we need to configure ossec to run the active response. In my case, I want to run it on the ossec server 
+Next, we need to configure ospatrol to run the active response. In my case, I want to run it on the ospatrol server 
 (so I choose location server) and every time the rule 1002 is fired (see rules_id 1002). You can also specify 
 the level or different locations.
 
@@ -50,7 +50,7 @@ Create active response script:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 With that done, we can create the active response script. The ``mail-test.sh`` must be inside the 
-``/var/ossec/active-response/bin/`` with the execution permissions set.
+``/var/ospatrol/active-response/bin/`` with the execution permissions set.
 
 **What are the arguments are passed to the script?**
 
@@ -64,11 +64,11 @@ With that done, we can create the active response script. The ``mail-test.sh`` m
 .. code-block:: console
 
   #!/bin/sh
-  # E-mails an alert - copy at /var/ossec/active-response/bin/mail-test.sh
+  # E-mails an alert - copy at /var/ospatrol/active-response/bin/mail-test.sh
   # Change e-mail ADDRESSS
   # Author: Daniel Cid
 
-  MAILADDRESS="xx@ossec.net"
+  MAILADDRESS="xx@ospatrol.net"
   ACTION=$1
   USER=$2
   IP=$3
@@ -92,26 +92,26 @@ With that done, we can create the active response script. The ``mail-test.sh`` m
   ALERTLAST=`echo "$ALERTID" | cut -d  "." -f 2`
 
   # Getting full alert
-  grep -A 10 "$ALERTTIME" ${PWD}/../logs/alerts/alerts.log | grep -v ".$ALERTLAST: " -A 10 | mail $MAILADDRESS -s "OSSEC Alert"
+  grep -A 10 "$ALERTTIME" ${PWD}/../logs/alerts/alerts.log | grep -v ".$ALERTLAST: " -A 10 | mail $MAILADDRESS -s "OSPatrol Alert"
 
 
 
 
-Restart OSSEC and test it:
+Restart OSPatrol and test it:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After the configuration is done, you can restart OSSEC and test the configuration. For the above example, 
+After the configuration is done, you can restart OSPatrol and test the configuration. For the above example, 
 I can run the logger command to simular a segmentation fault message.
 
 .. code-block:: console
-  # /var/ossec/bin/ossec-control restart
+  # /var/ospatrol/bin/ospatrol-control restart
   # logger "Segmentation Fault"
 
 
-You should get in the /var/ossec/logs/active-response.log, the following:
+You should get in the /var/ospatrol/logs/active-response.log, the following:
 
 .. code-block:: console
-  Fri Jul 27 23:48:31 BRT 2007 /var/ossec/active-response/bin/mail-test.sh add - - 1185590911.25916 1002 /var/log/messages
+  Fri Jul 27 23:48:31 BRT 2007 /var/ospatrol/active-response/bin/mail-test.sh add - - 1185590911.25916 1002 /var/log/messages
 
 
 And in your e-mail:
@@ -119,9 +119,9 @@ And in your e-mail:
 .. code-block:: console
 
   from: root <root@xx.org>
-  to: xx@ossec.net	 
+  to: xx@ospatrol.net	 
   date: Jul 27, 2007 11:48 PM	 
-  subject: OSSEC Alert	 
+  subject: OSPatrol Alert	 
 
   ** Alert 1185590911.25661: mail  - syslog,errors,
   2007 Jul 27 23:48:31 xx->/var/log/messages

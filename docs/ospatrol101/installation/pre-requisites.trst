@@ -7,7 +7,7 @@ The installation pre-requisites are pretty simple and depend on the type of inst
 All installation types require gcc and the basic development libraries.
 
 Server and local installs may require either MySQL or PostgreSQL client libraries if you plan on logging to a database.
-The OpenSSL development libraries are required for ossec-authd support.
+The OpenSSL development libraries are required for ospatrol-authd support.
 
 Agent installs require the OpenSSL development libraries for agent-auth support.
 
@@ -45,11 +45,11 @@ Mac OS X Lion issues:
 ^^^^^^^^^^^^^^^^^^^^^
 
 OS X Lion primarily uses llvm for compilation, but there appears to be an issue with the inline assembly support.
-Use ``gcc`` to compile OSSEC.
+Use ``gcc`` to compile OSPatrol.
 
 
 OpenBSD:
 ^^^^^^^^
 
-A default installation of OpenBSD should include everything necessary to perform an installation of OSSEC.
+A default installation of OpenBSD should include everything necessary to perform an installation of OSPatrol.
 

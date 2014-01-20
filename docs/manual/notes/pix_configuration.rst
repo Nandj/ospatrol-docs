@@ -1,4 +1,4 @@
-How to configure PIX and OSSEC
+How to configure PIX and OSPatrol
 ------------------------------
 
 by Dale Neufeld <canuck.eh ( at ) gmail.com>
@@ -38,16 +38,16 @@ http://www.cisco.com/en/US/products/sw/secursw/ps2120/products_system_message_gu
   7             debugging 
 
 
-2. Ensure your OSSEC host is seeing the PIX syslog messages
+2. Ensure your OSPatrol host is seeing the PIX syslog messages
 
 .. code-block:: console
 
   # tcpdump -i eth0 -A -s 0 udp port 514 and host <pix_ip>
 
 
-3. Configure OSSEC to listen
+3. Configure OSPatrol to listen
 
-Add the following to ossec.conf
+Add the following to ospatrol.conf
 
 .. code-block:: console
 
@@ -59,10 +59,10 @@ Add the following to ossec.conf
 
 
  
-4. Restart the ossec service to begin listening
+4. Restart the ospatrol service to begin listening
 
 .. code-block:: console
 
-  # /var/ossec/bin/ossec-control restart
+  # /var/ospatrol/bin/ospatrol-control restart
 
 

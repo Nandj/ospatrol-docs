@@ -6,33 +6,33 @@
 Writing Agentless Scripts
 =========================
 
-All scripts that work with OSSEC agentless security monitoring use stdout 
-for communication and reporting to the OSSEC server. This makes writing scripts 
-for OSSEC simple as you do not need to do anything more then print or echo to 
-stdout. The format of the output does need to meet the OSSEC specification, 
+All scripts that work with OSPatrol agentless security monitoring use stdout 
+for communication and reporting to the OSPatrol server. This makes writing scripts 
+for OSPatrol simple as you do not need to do anything more then print or echo to 
+stdout. The format of the output does need to meet the OSPatrol specification, 
 but that is a very simple thing to do.
 
 Agentless Script Types 
 ----------------------
 
-Before we move to the specification details I need to explain that OSSEC agentless 
+Before we move to the specification details I need to explain that OSPatrol agentless 
 runs to different types of scripts. Namely the following:
 
 - **periodic_diff**
 
-  - Scripts output data to the OSSEC agentless process that will then be compared 
-    to past runs and if there are differences an OSSEC alert will be generated.
+  - Scripts output data to the OSPatrol agentless process that will then be compared 
+    to past runs and if there are differences an OSPatrol alert will be generated.
 
 - **periodic** 
 
-  - Scripts output controlled messages to the OSSEC agentless process that 
+  - Scripts output controlled messages to the OSPatrol agentless process that 
     will then be processed accordingly.
 
 Periodic diff Specification 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The output for periodic_diff is very simple, any and all output after the agentless 
-command :samp:`STORE: now` and before the next OSSEC Command will be stored and compared 
+command :samp:`STORE: now` and before the next OSPatrol Command will be stored and compared 
 for differences. This type of script is mostly used for hardware devices such as 
 Cisco IOS, Juniper JunOS, and other products.
 
@@ -40,25 +40,25 @@ Scripts that use the periodic_diff make use of the following commands:
 
 - **INFO:**
 
-  - The string following INFO will be logged to /var/ossec/logs/ossec.log by OSSEC for debugging. 
+  - The string following INFO will be logged to /var/ospatrol/logs/ospatrol.log by OSPatrol for debugging. 
 
 - **ERROR:** 
 
   - Error needs to be reported. The string following this command is forwarded to the 
-    OSSEC manager, and the OSSEC process closes down the script.
+    OSPatrol manager, and the OSPatrol process closes down the script.
 
 - **STORE:** 
 
   - All the lines that follows this command will be added stored and compared to 
     previous runs of the script
 
-Here is an example of a periodic_diff script that comes with OSSEC. (Please note 
-with all agentless scripts you must be in the root of the OSSEC install for them 
+Here is an example of a periodic_diff script that comes with OSPatrol. (Please note 
+with all agentless scripts you must be in the root of the OSPatrol install for them 
 to function correctly.)
 
 .. code-block:: console 
 
-    obsd46#( cd /var/ossec && ./agentless/ssh_pixconfig_diff cisco@172.17.0.1 'show hardware' )
+    obsd46#( cd /var/ospatrol && ./agentless/ssh_pixconfig_diff cisco@172.17.0.1 'show hardware' )
     spawn ssh -c des cisco@172.17.0.1
     No valid ciphers for protocol version 2 given, using defaults.
     Password: 
@@ -142,27 +142,27 @@ to function correctly.)
 
 
 In this example above the script would store the contents between :samp:`STORE: now` 
-and :samp:`INFO: Finished.`. If this is the first time that OSSEC agentless has run 
+and :samp:`INFO: Finished.`. If this is the first time that OSPatrol agentless has run 
 this command no alerts would be generated and the contents would have been saved for 
-later comparisons. If OSSEC agentless has a stored copy from a previous execution it 
+later comparisons. If OSPatrol agentless has a stored copy from a previous execution it 
 will compare the files and if there are any differences it will generate an alert.
 
 Periodic Specification 
 ^^^^^^^^^^^^^^^^^^^^^^
 
 The periodic specification has more options and gives more control to the script 
-writer on what actions OSSEC will take. Once again stdout is used for communication 
+writer on what actions OSPatrol will take. Once again stdout is used for communication 
 so script writing is easy.
 
 - **INFO:** 
 
-  - The string following INFO will be logged to /var/ossec/logs/ossec.log by OSSEC for 
+  - The string following INFO will be logged to /var/ospatrol/logs/ospatrol.log by OSPatrol for 
     debugging.
 
 - **ERROR:**
 
   - Error needs to be reported. The string following this command is forwarded to the 
-    OSSEC manager, and the OSSEC process closes down the script.
+    OSPatrol manager, and the OSPatrol process closes down the script.
 
 - **FWD:**
 
@@ -170,7 +170,7 @@ so script writing is easy.
 
 - **LOG:** 
 
-  - The string following LOG: will be passed into ossec-analysisd and processed like 
+  - The string following LOG: will be passed into ospatrol-analysisd and processed like 
     all other log messages.
     
 Example of real FWD: command.
@@ -184,7 +184,7 @@ The Fields break down in to the following:
 
 - FWD:
 
-  -  The OSSEC Command
+  -  The OSPatrol Command
 
 - 19419 
 
@@ -215,11 +215,11 @@ The Fields break down in to the following:
   - Path and name of file
 
 
-Using this format OSSEC can store the information about a file and then in the future run 
+Using this format OSPatrol can store the information about a file and then in the future run 
 compare that they are the same. If for some reason they are not the same an alert will be 
 generated. Here is an example of a password change on a linux system: ::
 
-    OSSEC HIDS Notification.
+    OSPatrol HIDS Notification.
     2009 Sep 21 15:19:00
 
     Received From: (ssh_integrity_check_linux) root@172.17.20.20->syscheck
@@ -238,13 +238,13 @@ Agentless Script: ssh_integrity_check_linux
 -------------------------------------------
 
 Now that we have an understanding of how agentless scripts communicate with the parent 
-OSSEC process, let’s move on to a working example. The OSSEC supplied script 
+OSPatrol process, let’s move on to a working example. The OSPatrol supplied script 
 ``ssh_integrity_check_linux`` is a great place to start, so lets open it up and see 
 what is going on.
 
 .. code-block:: console
     
-    obsd46# cat /var/ossec/agentless/ssh_integrity_check_linux
+    obsd46# cat /var/ospatrol/agentless/ssh_integrity_check_linux
      #!/usr/bin/env expect
 
      # @(#) $Id: ssh_integrity_check_linux,v 1.11 2009/06/24 17:06:21 dcid Exp $
@@ -322,8 +322,8 @@ characters in this way when we begin writing our own script.
     
 While special characters were being handled by expect it also looked for variables to 
 replace, in this case it will find $args and replace it with what ever arguments were 
-passed to the script by the OSSEC agentless process. If we specified the following in 
-``/var/ossec/etc/ossec.conf`` the $args variable would be replaced with ``/bin /etc /sbin``.
+passed to the script by the OSPatrol agentless process. If we specified the following in 
+``/var/ospatrol/etc/ospatrol.conf`` the $args variable would be replaced with ``/bin /etc /sbin``.
 
 .. code-block:: xml
 
@@ -347,7 +347,7 @@ left with this command.
 
 
 This script then goes and uses the Unix find command to locate all files in 
-the specified path (from the arguments passed) and generates an OSSEC FWD: command 
+the specified path (from the arguments passed) and generates an OSPatrol FWD: command 
 for each one and prints it to stdout. Making use of the commands stat, md5sum, and 
 sha1sum to generate the data needed. Here is an example of the output checking.
 
@@ -379,7 +379,7 @@ sha1sum to generate the data needed. Here is an example of the output checking.
 Modifying to make own Agentless Script: ssh_dmz_linux
 ----------------------------------------------------
 
-Using the built in OSSEC agentless scripts are great, but sometimes we need more 
+Using the built in OSPatrol agentless scripts are great, but sometimes we need more 
 focused scanning and checking. So let’s modify the ssh_integrity_check_linux 
 for our environment.
 
@@ -398,7 +398,7 @@ and use find to locate the files.
 
 .. code-block:: xml
 
-    obsd46# sudo -u ossec ssh root@172.17.20.20
+    obsd46# sudo -u ospatrol ssh root@172.17.20.20
     [linux26 ~]# find / -type f \( -perm -4000 -o -perm -2000 \) 
     /sbin/umount.nfs
     /sbin/netreport
@@ -447,7 +447,7 @@ this should be good starting point.
 
 .. code-block:: console 
 
-    obsd46# sudo -u ossec ssh root@172.17.20.20
+    obsd46# sudo -u ospatrol ssh root@172.17.20.20
     [linux26 ~]# find / \( -name ".ssh" -o -name "ssh" -o -name "sshd" -o -name "httpd" -o -name ".htaccess" 
     -o -name "pam.d" \) -exec find {} \;
     /var/www/html/admin/modules/framework/var/www/html/admin/modules/.htaccess
@@ -522,7 +522,7 @@ filter what is needed.
     -v "known_hosts|moduli|var\/log|var\/lock" | sort -u
 
 The above command we have found all files and paths that we would like to monitor, 
-but this still needs to be integrated into a script on the OSSEC server.
+but this still needs to be integrated into a script on the OSPatrol server.
 
 **Creating ssh_dmz_linux**
 
@@ -531,7 +531,7 @@ to make a copy.
 
 .. code-block:: console
 
-    obsd46# (cd /var/ossec/agentless && cp ssh_integrity_check_linux ssh_dmz_linux) 
+    obsd46# (cd /var/ospatrol/agentless && cp ssh_integrity_check_linux ssh_dmz_linux) 
 
 Integrating our new command line into the script we must pay close attention to 
 special characters that expect will process. Due to this we will need to escape 
@@ -542,7 +542,7 @@ Here is what the completed script will look like.
 
 .. code-block:: console 
 
-    obsd56# cat /var/ossec/agentless/ssh_dmz_linux
+    obsd56# cat /var/ospatrol/agentless/ssh_dmz_linux
      #!/usr/bin/env expect
 
      # @(#) $Id: ssh_integrity_check_linux,v 1.11 2009/06/24 17:06:21 dcid Exp $
@@ -596,11 +596,11 @@ Here is what the completed script will look like.
 
 **Testing** 
 
-Before we add this new script to OSSEC configuration we need to test it. 
+Before we add this new script to OSPatrol configuration we need to test it. 
 
 .. code-block:: console 
 
-    obsd46# (cd /var/ossec && sudo -u ossec ./agentless/ssh_dmz_linux root@172.17.20.20 )
+    obsd46# (cd /var/ospatrol && sudo -u ospatrol ./agentless/ssh_dmz_linux root@172.17.20.20 )
 
     ERROR: ssh_integrity_check <hostname> <arguments>
 
@@ -613,7 +613,7 @@ script as we do not make use of the $arg variable.
 
 .. code-block:: console 
 
-    obsd46# (cd /var/ossec && sudo -u ossec ./agentless/ssh_dmz_linux root@172.17.20.20 NOTUSED)
+    obsd46# (cd /var/ospatrol && sudo -u ospatrol ./agentless/ssh_dmz_linux root@172.17.20.20 NOTUSED)
     spawn ssh root@172.17.20.20
     Last login: Wed Nov  4 13:46:32 2009 from 172.17.20.131^M
     [linux26 ~]#  

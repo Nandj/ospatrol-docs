@@ -1,8 +1,8 @@
-.. _ossec_101_install_agent_windows:
+.. _ospatrol_101_install_agent_windows:
 
 
 
-OSSEC 101: Install Windows Agent:
+OSPatrol 101: Install Windows Agent:
 ---------------------------------
 
 

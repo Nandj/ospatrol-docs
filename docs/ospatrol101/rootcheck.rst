@@ -1,8 +1,8 @@
-.. _ossec_101_rootcheck:
+.. _ospatrol_101_rootcheck:
 
 
 
-OSSEC 101: rootcheck:
+OSPatrol 101: rootcheck:
 ---------------------------
 
 

@@ -1,7 +1,7 @@
-.. _ossec_101_front_ends:
+.. _ospatrol_101_front_ends:
 
 
-OSSEC 101: Front Ends:
+OSPatrol 101: Front Ends:
 ----------------------
 
 

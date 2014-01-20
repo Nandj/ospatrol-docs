@@ -1,10 +1,10 @@
-.. _ossec_101_syscheck_ignore_directory:
+.. _ospatrol_101_syscheck_ignore_directory:
 
 
 Sometimes it's necessary to ignore a directory or file so the syscheck alerts are not overwhelming.
 
-Ignoring a directory or file is another easy task in OSSEC. 
-In the ``<syscheck>`` section of an OSSEC system's ossec.conf you should see a number of examples:
+Ignoring a directory or file is another easy task in OSPatrol. 
+In the ``<syscheck>`` section of an OSPatrol system's ospatrol.conf you should see a number of examples:
 
 .. code-block:: console
 

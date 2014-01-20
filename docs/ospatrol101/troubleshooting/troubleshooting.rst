@@ -1,8 +1,8 @@
-.. _ossec_101_troubleshooting:
+.. _ospatrol_101_troubleshooting:
 
 
 
-OSSEC 101: Troubleshooting problems
+OSPatrol 101: Troubleshooting problems
 -----------------------------------
 
 

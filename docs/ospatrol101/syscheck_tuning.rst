@@ -1,8 +1,8 @@
-.. _ossec_101_syscheck_tuning:
+.. _ospatrol_101_syscheck_tuning:
 
 
 
-OSSEC 101: Tuning Syscheck:
+OSPatrol 101: Tuning Syscheck:
 ---------------------------
 
 

@@ -1,8 +1,8 @@
-.. _ossec_101_output_database:
+.. _ospatrol_101_output_database:
 
 
 
-OSSEC 101: database output
+OSPatrol 101: database output
 --------------------------
 
 

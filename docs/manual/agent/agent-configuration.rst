@@ -14,10 +14,10 @@ This is how it works.
 Create agent configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-First Create the file /var/ossec/etc/shared/agent.conf.
+First Create the file /var/ospatrol/etc/shared/agent.conf.
 
 Inside the file you can configure the agent just as you would normally at
-ossec.conf
+ospatrol.conf
 
 .. code-block:: xml 
 
@@ -71,18 +71,18 @@ see if the agent received the config and restart the agent remotely.
 
 .. code-block:: console 
 
-    # md5sum /var/ossec/etc/shared/agent.conf
-    MD5 (/var/ossec/etc/shared/agent.conf) = ee1882236893df851bd9e4842007e7e7
-    # /var/ossec/bin/agent_control -i 200
+    # md5sum /var/ospatrol/etc/shared/agent.conf
+    MD5 (/var/ospatrol/etc/shared/agent.conf) = ee1882236893df851bd9e4842007e7e7
+    # /var/ospatrol/bin/agent_control -i 200
 
-    OSSEC HIDS agent_control. Agent information:
+    OSPatrol HIDS agent_control. Agent information:
     Agent ID: 200
     Agent Name: ourhome
     IP address: 192.168.0.0/16
     Status: Active
 
     Operating system: Linux ourhome 2.6.24-23-generic #1 SMP Mon Jan 26 00..
-    Client version: OSSEC HIDS v2.1 / ee1882236893df851bd9e4842007e7e7
+    Client version: OSPatrol HIDS v2.1 / ee1882236893df851bd9e4842007e7e7
     Last keep alive: Tue Jun 30 08:29:17 2009
 
     Syscheck last started at: Tue Jun 30 04:29:32 2009
@@ -98,6 +98,6 @@ To restart the agent:
 
 .. code-block:: console 
 
-    # /var/ossec/bin/agent_control -R 200 (where 200 is the agent id)
+    # /var/ospatrol/bin/agent_control -R 200 (where 200 is the agent id)
 
-    OSSEC HIDS agent_control: Restarting agent: 200
+    OSPatrol HIDS agent_control: Restarting agent: 200

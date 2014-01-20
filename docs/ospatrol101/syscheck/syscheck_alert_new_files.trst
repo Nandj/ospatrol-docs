@@ -1,11 +1,11 @@
-.. _ossec_101_syscheck_alert_new_files:
+.. _ospatrol_101_syscheck_alert_new_files:
 
 
 By default syscheck does not alert on new files. This is done in an attemp to stop a flood of alerts on installation.
 Changing this behavior is very easy.
 
 
-First, add the following to the ``<syscheck>`` section of the OSSEC server's ``ossec.conf``:
+First, add the following to the ``<syscheck>`` section of the OSPatrol server's ``ospatrol.conf``:
 
 .. code-block:: console 
 
@@ -22,7 +22,7 @@ For example, my ``<syscheck>`` section now starts like this:
     <auto_ignore>no</auto_ignore>
     
     <!-- Directories to check  (perform all possible verifications) -->
-    <directories check_all="yes" report_changes="yes">/etc,/var/named/etc,/var/www/conf,/var/ossec/etc,/var/ossec/rules</directories>
+    <directories check_all="yes" report_changes="yes">/etc,/var/named/etc,/var/www/conf,/var/ospatrol/etc,/var/ospatrol/rules</directories>
     <directories check_all="yes">/usr/bin,/usr/sbin</directories>
     <directories check_all="yes">/bin,/sbin</directories>
 
@@ -31,12 +31,12 @@ For example, my ``<syscheck>`` section now starts like this:
 
 
 
-OSSEC has a default rule to alert on new files, but the level is set to 0. To change this, add the following rule to your ``local_rules.xml``:
+OSPatrol has a default rule to alert on new files, but the level is set to 0. To change this, add the following rule to your ``local_rules.xml``:
 
 .. code-block:: console
 
   <rule id="554" level="7" overwrite="yes">
-    <category>ossec</category>
+    <category>ospatrol</category>
     <decoded_as>syscheck_new_entry</decoded_as>
     <description>File added to the system.</description>
     <group>syscheck,</group>
@@ -44,7 +44,7 @@ OSSEC has a default rule to alert on new files, but the level is set to 0. To ch
 
 This overwrites the default rule 554. Set the level to a number that fits your organization's policies. 
 
-After making these changes, restart the server's OSSEC processes.
+After making these changes, restart the server's OSPatrol processes.
 
 
 Customizing this a bit more is also possible. For instance we set 554 to level 2 so it is logged but will not send an email alert:
@@ -52,7 +52,7 @@ Customizing this a bit more is also possible. For instance we set 554 to level 2
 .. code-block:: console
 
   <rule id="554" level="2" overwrite="yes">
-    <category>ossec</category>
+    <category>ospatrol</category>
     <decoded_as>syscheck_new_entry</decoded_as>
     <description>File added to the system.</description>
     <group>syscheck,</group>

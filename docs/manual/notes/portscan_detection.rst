@@ -1,4 +1,4 @@
-Detecting portscans with OSSEC and iplog
+Detecting portscans with OSPatrol and iplog
 ----------------------------------------
 
 iplog is a TCP/IP traffic logger. Currently, it is capable of logging TCP, UDP, and ICMP traffic. iplog is able to detect TCP port scans, TCP null scans, FIN scans, UDP and ICMP "smurf" attacks, bogus TCP flags, TCP SYN scans, TCP "Xmas" scans, ICMP ping floods, UDP scans, and IP fragment attacks. iplog is able to run in promiscuous mode and monitor traffic to all hosts on a network. iplog uses libpcap to read data from the network and can be ported to any system that supports pthreads and on which libpcap will function.
@@ -243,7 +243,7 @@ bogus TCP flags:
 
   <font color="red">Nov 14 15:57:56 TCP: Bogus TCP flags set by 10.10.160.2:60873 (dest port 25)</font>
 
-OSSEC (HIDS) + iplog (sensor) implementation:
+OSPatrol (HIDS) + iplog (sensor) implementation:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Work in progress
@@ -359,9 +359,9 @@ Only for working decoders:
 
 .. code-block:: console
 
-  cd /var/ossec/rules
+  cd /var/ospatrol/rules
   touch iplog_rules.xml
-  chown root:ossec iplog_rules.xml
+  chown root:ospatrol iplog_rules.xml
   chmod 550 iplog_rules.xml
 
 in iplog_rules.xml include:
@@ -375,12 +375,12 @@ in iplog_rules.xml include:
   </rule>
  </group>
 
-ossec.conf'
+ospatrol.conf'
 
 .. code-block:: console
 
-  cd /var/ossec/etc
-  vi  ossec.conf
+  cd /var/ospatrol/etc
+  vi  ospatrol.conf
 
 include in the correct place:
 
@@ -405,14 +405,14 @@ start iplog
 
  iplog -d 
 
-restart ossec
+restart ospatrol
 .. code-block:: console
 
-  /var/ossec/bin/ossec-control restart
+  /var/ospatrol/bin/ospatrol-control restart
 
 test with nmap (see before)
 
-OSSEC active-response:
+OSPatrol active-response:
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Firewall Drop: FreeBSD-IPFW:
@@ -424,7 +424,7 @@ Add to your ipfw script the follow lines, if you are using the 00001 rule number
   /sbin/ipfw add 00001 deny ip from table\(00002\) to any
   /sbin/ipfw add 00001 deny ip from any to table\(00002\)
 
-Change  /var/ossec/active-response/bin/firewall-drop.sh to adjust to the red lines
+Change  /var/ospatrol/active-response/bin/firewall-drop.sh to adjust to the red lines
 
 .. code-block:: console
 
@@ -435,7 +435,7 @@ Change  /var/ossec/active-response/bin/firewall-drop.sh to adjust to the red lin
   # please change it here.
   # Expect: srcip
   # Author: Rafael Capovilla - under @ ( at ) underlinux.com.br
-  # Author: Daniel B. Cid - dcid @ ( at ) ossec.net
+  # Author: Daniel B. Cid - dcid @ ( at ) ospatrol.net
   # Last modified: May 07, 2006
   UNAME=`uname`
   IPFW="/sbin/ipfw"
@@ -449,7 +449,7 @@ Change  /var/ossec/active-response/bin/firewall-drop.sh to adjust to the red lin
   cd $LOCAL
   cd ../
   PWD=`pwd`
-  echo "`date` $0 $1 $2 $3" >> ${PWD}/ossec-hids-responses.log
+  echo "`date` $0 $1 $2 $3" >> ${PWD}/ospatrol-hids-responses.log
   # Checking for an IP
   if [ "x${IP}" = "x" ]; then
     echo "$0: <action> <username> <ip>" 
@@ -481,7 +481,7 @@ Change  /var/ossec/active-response/bin/firewall-drop.sh to adjust to the red lin
   # Not FreeBSD
   exit 1;
 
-Include in ``/var/ossec/etc/ossec.conf``:
+Include in ``/var/ospatrol/etc/ospatrol.conf``:
 
 .. code-block:: console
 
@@ -498,13 +498,13 @@ Include in ``/var/ossec/etc/ossec.conf``:
        <rules_id>99990</rules_id>
   </active-response>
 
-restart ossec:
+restart ospatrol:
 
 .. code-block:: console
 
-  /var/ossec/bin/ossec-control restart
+  /var/ospatrol/bin/ospatrol-control restart
 
-Scan your machine (caution OSSEC will block the scanner IP) from online scanner server like: http://www.derkeiler.com/Service/PortScan/, or from a remote machine with: 
+Scan your machine (caution OSPatrol will block the scanner IP) from online scanner server like: http://www.derkeiler.com/Service/PortScan/, or from a remote machine with: 
 
 .. code-block:: console
 
@@ -520,7 +520,7 @@ or
 
 .. code-block:: console
 
-  tail -f /var/ossec/active-response/ossec-hids-responses.log
+  tail -f /var/ospatrol/active-response/ospatrol-hids-responses.log
 
 if you want to flush the banned IPs in the table
 

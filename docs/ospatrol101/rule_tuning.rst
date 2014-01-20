@@ -1,10 +1,10 @@
-.. _ossec_101_rule_tuning:
+.. _ospatrol_101_rule_tuning:
 
 
-OSSEC 101: Rule Tuning
+OSPatrol 101: Rule Tuning
 ----------------------
 
-  This section will explain OSSEC rules.
+  This section will explain OSPatrol rules.
   It will also provide a step by step process for creating new rules and decoders.
 
 

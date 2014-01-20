@@ -13,18 +13,18 @@ exactly what has changed.
 Agentless configuration options 
 -------------------------------
 
-.. include:: ../../syntax/ossec_config.agentless.trst 
+.. include:: ../../syntax/ospatrol_config.agentless.trst 
 
 Check :ref:`_manual-agentless-scripts` for more information.
 
 Getting started with agentless
 ------------------------------
 
-After you installed OSSEC, you need to enable the agentless monitoring:
+After you installed OSPatrol, you need to enable the agentless monitoring:
 
 .. code-block:: console 
 
-    # /var/ossec/bin/ossec-control enable agentless 
+    # /var/ospatrol/bin/ospatrol-control enable agentless 
 
 And provide the SSH authentication to the host you want to access. For Cisco devices 
 (PIX, routers, etc), you need to provide an additional parameter for the enable password. 
@@ -34,12 +34,12 @@ parameter. In this example, I am adding a Linux box (example.net) and a PIX fire
 
 .. code-block:: console 
 
-    # /var/ossec/agentless/register_host.sh add root@example.net mypass1
+    # /var/ospatrol/agentless/register_host.sh add root@example.net mypass1
       *Host root@example.netl added.
-    # /var/ossec/agentless/register_host.sh add pix@pix.fw.local pixpass enablepass
+    # /var/ospatrol/agentless/register_host.sh add pix@pix.fw.local pixpass enablepass
       *Host pix@pix.fw.local added.
 
-    # /var/ossec/agentless/register_host.sh list
+    # /var/ospatrol/agentless/register_host.sh list
       *Available hosts:
     pix@pix.fw.local
     root@example.net
@@ -50,16 +50,16 @@ create the public key:
 
 .. code-block:: console 
 
-    # sudo -u ossec ssh-keygen
+    # sudo -u ospatrol ssh-keygen
 
-It will create the public keys inside /var/ossec/.ssh .  After that, just scp the 
+It will create the public keys inside /var/ospatrol/.ssh .  After that, just scp the 
 public key to the remote box and your password less connection should work.
 
 Configuring agentless 
 ---------------------
 
 Once you have added all your systems, you need to configure
-OSSEC to monitor them. By default, we have 4 agentless types
+OSPatrol to monitor them. By default, we have 4 agentless types
 (but we plan to add more soon):
 
 - ssh_integrity_check_bsd
@@ -67,9 +67,9 @@ OSSEC to monitor them. By default, we have 4 agentless types
 - ssh_generic_diff 
 - ssh_pixconfig_diff
 
-For the first two, you give a list of directories in the configuration and OSSEC
+For the first two, you give a list of directories in the configuration and OSPatrol
 will do the integrity checking of them on the remote box. On the
-ssh_generic_diff, you give a set of commands to run on the remote box and OSSEC
+ssh_generic_diff, you give a set of commands to run on the remote box and OSPatrol
 will alert when the output of them changes. The ssh_pixconfig_diff will alert
 when a Cisco PIX/router configuration changes.
 
@@ -118,15 +118,15 @@ commands in the arguments option. To use “su”, you need to set the value
 Running the completed setup
 ---------------------------
 
-Once the configuration is completed, you can restart OSSEC. You should see
-something like “Started ossec-agentlessd” in the output. Before each agentless
-connection is started, OSSEC will do a configuration check to make sure
-everything is fine. Look at /var/ossec/logs/ossec.log for any error. If you see:
+Once the configuration is completed, you can restart OSPatrol. You should see
+something like “Started ospatrol-agentlessd” in the output. Before each agentless
+connection is started, OSPatrol will do a configuration check to make sure
+everything is fine. Look at /var/ospatrol/logs/ospatrol.log for any error. If you see:
 
 .. code-block:: 
 
-    2008/12/12 15:20:06 ossec-agentlessd: ERROR: Expect command not found (or bad arguments) for 'ssh_integrity_check_bsd'.
-    2008/12/12 15:20:06 ossec-agentlessd: ERROR: Test failed for 'ssh_integrity_check_bsd' (127). Ignoring.'
+    2008/12/12 15:20:06 ospatrol-agentlessd: ERROR: Expect command not found (or bad arguments) for 'ssh_integrity_check_bsd'.
+    2008/12/12 15:20:06 ospatrol-agentlessd: ERROR: Test failed for 'ssh_integrity_check_bsd' (127). Ignoring.'
 
 It means that you don’t have the expect library installed on the server (it is
 not necessary to install anything on the agentless systems to monitor). On
@@ -136,18 +136,18 @@ Ubuntu you can do the following to install:
 
     # apt-get install expect 
 
-After installing expect, you can restart OSSEC and you should see: 
+After installing expect, you can restart OSPatrol and you should see: 
 
 .. code-block:: 
 
-    2008/12/12 15:24:12 ossec-agentlessd: INFO: Test passed for 'ssh_integrity_check_bsd'.'
+    2008/12/12 15:24:12 ospatrol-agentlessd: INFO: Test passed for 'ssh_integrity_check_bsd'.'
 
 When it connects to the remote system, you will also see:
 
 .. code-block:: 
 
-    2008/12/12 15:25:19 ossec-agentlessd: INFO: ssh_integrity_check_bsd: root@example.net: Starting.
-    2008/12/12 15:25:46 ossec-agentlessd: INFO: ssh_integrity_check_bsd: root@example.net: Finished.
+    2008/12/12 15:25:19 ospatrol-agentlessd: INFO: ssh_integrity_check_bsd: root@example.net: Starting.
+    2008/12/12 15:25:46 ospatrol-agentlessd: INFO: ssh_integrity_check_bsd: root@example.net: Finished.
 
 Alerts
 ------
@@ -156,14 +156,14 @@ These are some of the alerts you will get:
 
 For the ssh_generic_diff::
 
-    OSSEC HIDS Notification.
+    OSPatrol HIDS Notification.
     2008 Dec 12 01:58:30
 
     Received From: (ssh_generic_diff) root@example.net->agentless
     Rule: 555 fired (level 7) -> "Integrity checksum for agentless device changed."
     Portion of the log(s):
 
-    ossec: agentless: Change detected:
+    ospatrol: agentless: Change detected:
     35c35
     < -rw-r-r- 1 root wheel 34 Dec 10 03:55 hosts.deny
     --
@@ -173,14 +173,14 @@ For the ssh_generic_diff::
 
 For the PIX::
 
-    OSSEC HIDS Notification.
+    OSPatrol HIDS Notification.
     2008 Dec 01 15:48:03
 
     Received From: (ssh_pixconfig_diff) pix@pix.fw.local->agentless
     Rule: 555 fired (level 7) -> "Integrity checksum for agentless device changed."
     Portion of the log(s):
 
-    ossec: agentless: Change detected:
+    ospatrol: agentless: Change detected:
     48c48
     < fixup protocol ftp 21
     --

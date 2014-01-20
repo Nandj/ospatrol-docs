@@ -1,6 +1,6 @@
-.. _faq_ossec_wui:
+.. _faq_ospatrol_wui:
 
-OSSEC-WUI: FAQ
+OSPatrol-WUI: FAQ
 --------------
 
 .. contents:: 
@@ -16,7 +16,7 @@ Why does the OSSE-WUI appear to be dead?
 Why does the src ip field contain strange information instead of an IP?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Users who have installed OSSEC-WUI 0.3, have not applied the necessary patches, and are using OSSEC 2.6 or later may see alerts like the following:
+   Users who have installed OSPatrol-WUI 0.3, have not applied the necessary patches, and are using OSPatrol 2.6 or later may see alerts like the following:
 
    .. code-block:: console
 
@@ -30,8 +30,8 @@ Why does the src ip field contain strange information instead of an IP?
       2013-02-02 10:48:41 install libaprutil1 <none> 1.3.12+dfsg-3
 
     
-   The alert format changed in 2.6, and since OSSEC-WUI is essentially abandonware it was not updated to handle the changes. 
-   A number of users have provided patches to correct the issues, and the OSSEC team is planning on releasing an updated WUI containing these patches.
-   You can find a patched version of the OSSEC-WUI at a `bitbucket repository <https://bitbucket.org/jbcheng/ossec-wui>_`.
+   The alert format changed in 2.6, and since OSPatrol-WUI is essentially abandonware it was not updated to handle the changes. 
+   A number of users have provided patches to correct the issues, and the OSPatrol team is planning on releasing an updated WUI containing these patches.
+   You can find a patched version of the OSPatrol-WUI at a `bitbucket repository <https://bitbucket.org/jbcheng/ospatrol-wui>_`.
  
 

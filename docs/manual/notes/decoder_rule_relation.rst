@@ -4,7 +4,7 @@ Question: How does the decoder.xml relate to the rules?
 Answer:
 ^^^^^^^
 
-The decoder.xml file can be used to capture certain bits of information from the logs that ossec is monitoring.  These bits of information can be passed to rules as XML objects.  Take for example, the pair of rules below:
+The decoder.xml file can be used to capture certain bits of information from the logs that ospatrol is monitoring.  These bits of information can be passed to rules as XML objects.  Take for example, the pair of rules below:
 
 .. code-block:: console
 
@@ -32,7 +32,7 @@ The first rule acts as a "collector" for specific log messages.  As part of the 
    <order>srcip,url,id</order>
  </decoder>
 
-Looking at the regular expression we can see that the source IP, the URL, and the HTTP Result Code are captured.  The first set of parentheses denotes that this part of the expression is the source IP, the second set denotes the URL, and the last set is the ID code, which for the example is the HTTP result code.  Going back to the second rule above, its construct contains the ``<id></id>`` tags, which, in this case (rule #3101), is used to match a 400 HTTP result code.  Something else worth noting is the multiple <regex> tags in this example.  This is simply done to provide enhanced clarity and preventing lines over 80 characters.  The values inside both tags are concatenated before being processed by ossec.
+Looking at the regular expression we can see that the source IP, the URL, and the HTTP Result Code are captured.  The first set of parentheses denotes that this part of the expression is the source IP, the second set denotes the URL, and the last set is the ID code, which for the example is the HTTP result code.  Going back to the second rule above, its construct contains the ``<id></id>`` tags, which, in this case (rule #3101), is used to match a 400 HTTP result code.  Something else worth noting is the multiple <regex> tags in this example.  This is simply done to provide enhanced clarity and preventing lines over 80 characters.  The values inside both tags are concatenated before being processed by ospatrol.
 
 These regex variables can also be passed to active-response command constructs like the one show below:
 

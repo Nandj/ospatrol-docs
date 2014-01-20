@@ -1,42 +1,42 @@
-* This page was reproduced here with permission from Jeremy Rossi.  Orgianl post was `Praetorian Prefect: OSSEC: Agentless scripts <http://praetorianprefect.com/archives/2009/11/ossec-agentless-scripts/>`_
+* This page was reproduced here with permission from Jeremy Rossi.  Orgianl post was `Praetorian Prefect: OSPatrol: Agentless scripts <http://praetorianprefect.com/archives/2009/11/ospatrol-agentless-scripts/>`_
 
 Agentless Scripts
 ^^^^^^^^^^^^^^^^^
 
-All scripts that work with OSSEC agentless security monitoring use stdout for communication and reporting to the OSSEC server. This makes writing scripts for OSSEC simple as you do not need to do anything more then print or echo to stdout. The format of the output does need to meet the OSSEC specification, but that is a very simple thing to do.
+All scripts that work with OSPatrol agentless security monitoring use stdout for communication and reporting to the OSPatrol server. This makes writing scripts for OSPatrol simple as you do not need to do anything more then print or echo to stdout. The format of the output does need to meet the OSPatrol specification, but that is a very simple thing to do.
 
-Before we move to the specification details I need to explain that OSSEC agentless runs to different types of scripts. Namely the following:
+Before we move to the specification details I need to explain that OSPatrol agentless runs to different types of scripts. Namely the following:
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |Type           | Description                                                                                                                                               |
 +===============+===========================================================================================================================================================+
-| periodic_diff | Scripts output data to the OSSEC agentless process that will then be compared to past runs and if there are differences an OSSEC alert will be generated. |
+| periodic_diff | Scripts output data to the OSPatrol agentless process that will then be compared to past runs and if there are differences an OSPatrol alert will be generated. |
 +---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| periodic      | Scripts output controlled messages to the OSSEC agentless process that will then be processed accordingly.                                                |
+| periodic      | Scripts output controlled messages to the OSPatrol agentless process that will then be processed accordingly.                                                |
 +---------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Periodic diff Specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The output for periodic_diff is very simple, any and all output after the agentless command .STORE: now. and before the next OSSEC Command will be stored and compared for differences. This type of script is mostly used for hardware devices such as Cisco IOS, Juniper JunOS, and other products.
+The output for periodic_diff is very simple, any and all output after the agentless command .STORE: now. and before the next OSPatrol Command will be stored and compared for differences. This type of script is mostly used for hardware devices such as Cisco IOS, Juniper JunOS, and other products.
 
 Scripts that use the periodic_diff make use of the following commands:
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Command  | Description                                                                                                                                        |
 +==========+====================================================================================================================================================+
-| INFO:    | The string following INFO will be logged to /var/ossec/logs/ossec.log by OSSEC for debugging.                                                      |
+| INFO:    | The string following INFO will be logged to /var/ospatrol/logs/ospatrol.log by OSPatrol for debugging.                                                      |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-| ERROR:   | Error needs to be reported. The string following this command is forwarded to the OSSEC manager, and the OSSEC process closes down the script.     |
+| ERROR:   | Error needs to be reported. The string following this command is forwarded to the OSPatrol manager, and the OSPatrol process closes down the script.     |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 | STORE:   | All the lines that follows this command will be added stored and compared to previous runs of the script.                                          |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Here is an example of a periodic_diff script that comes with OSSEC. (Please note with all agentless scripts you must be in the root of the OSSEC install for them to function correctly.)
+Here is an example of a periodic_diff script that comes with OSPatrol. (Please note with all agentless scripts you must be in the root of the OSPatrol install for them to function correctly.)
 
 .. code-block:: console
 
-  obsd46#( cd /var/ossec && ./agentless/ssh_pixconfig_diff cisco@172.17.0.1 'show hardware' )
+  obsd46#( cd /var/ospatrol && ./agentless/ssh_pixconfig_diff cisco@172.17.0.1 'show hardware' )
   spawn ssh -c des cisco@172.17.0.1
   No valid ciphers for protocol version 2 given, using defaults.
   Password: 
@@ -119,23 +119,23 @@ Here is an example of a periodic_diff script that comes with OSSEC. (Please note
   INFO: Finished.
 
 
-In this example above the script would store the contents between ``STORE: now`` and ``INFO: Finished.`` If this is the first time that OSSEC agentless has run this command no alerts would be generated and the contents would have been saved for later comparisons. If OSSEC agentless has a stored copy from a previous execution it will compare the files and if there are any differences it will generate an alert.
+In this example above the script would store the contents between ``STORE: now`` and ``INFO: Finished.`` If this is the first time that OSPatrol agentless has run this command no alerts would be generated and the contents would have been saved for later comparisons. If OSPatrol agentless has a stored copy from a previous execution it will compare the files and if there are any differences it will generate an alert.
 
 Periodic Specification
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The periodic specification has more options and gives more control to the script writer on what actions OSSEC will take. Once again stdout is used for communication so script writing is easy.
+The periodic specification has more options and gives more control to the script writer on what actions OSPatrol will take. Once again stdout is used for communication so script writing is easy.
 
 +----------+------------------------------------------------------------------------------------------------------------------------------------------------+
 | Command  | Description                                                                                                                                    |
 +==========+================================================================================================================================================+
-| INFO:    | The string following INFO will be logged to /var/ossec/logs/ossec.log by OSSEC for debugging.                                                  |
+| INFO:    | The string following INFO will be logged to /var/ospatrol/logs/ospatrol.log by OSPatrol for debugging.                                                  |
 +----------+------------------------------------------------------------------------------------------------------------------------------------------------+
-| ERROR:   | Error needs to be reported. The string following this command is forwarded to the OSSEC manager, and the OSSEC process closes down the script. |
+| ERROR:   | Error needs to be reported. The string following this command is forwarded to the OSPatrol manager, and the OSPatrol process closes down the script. |
 +----------+------------------------------------------------------------------------------------------------------------------------------------------------+
 | FWD:     | The string following FWD is a colon delimited list of stats on a given file.                                                                   |
 +----------+------------------------------------------------------------------------------------------------------------------------------------------------+
-| LOG:     | The string following LOG: will be passed into ossec-analysisd and processed like all other log messages.                                       |
+| LOG:     | The string following LOG: will be passed into ospatrol-analysisd and processed like all other log messages.                                       |
 +----------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -152,7 +152,7 @@ The Fields break down in to the following
 +-------------------------------------------+---------------------------------+
 | Field                                     | Description                     |
 +===========================================+=================================+
-| FWD:                                      | The OSSEC Command               |
+| FWD:                                      | The OSPatrol Command               |
 +-------------------------------------------+---------------------------------+
 | 19419                                     | Total size of file, in bytes    |
 +-------------------------------------------+---------------------------------+
@@ -169,11 +169,11 @@ The Fields break down in to the following
 | ./.bash_history                           | Path and name of file           |
 +-------------------------------------------+---------------------------------+
 
-Using this format OSSEC can store the information about a file and then in the future run compare that they are the same. If for some reason they are not the same an alert will be generated. Here is an example of a password change on a linux system:
+Using this format OSPatrol can store the information about a file and then in the future run compare that they are the same. If for some reason they are not the same an alert will be generated. Here is an example of a password change on a linux system:
 
 .. code-block:: console
 
-  OSSEC HIDS Notification.
+  OSPatrol HIDS Notification.
   2009 Sep 21 15:19:00
 
   Received From: (ssh_integrity_check_linux) root@172.17.20.20->syscheck

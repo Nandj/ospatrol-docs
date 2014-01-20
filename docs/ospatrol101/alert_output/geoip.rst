@@ -1,4 +1,4 @@
-.. _ossec_101_alert_output_email_geoip:
+.. _ospatrol_101_alert_output_email_geoip:
 
 
 
@@ -24,20 +24,20 @@ cumentation for Adding GeoIP Support
     wget ttp://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
     gzip -d GeoLiteCityv6.dat.gz
     su
-    cp GeoLiteCity*.dat /var/ossec/etc/
+    cp GeoLiteCity*.dat /var/ospatrol/etc/
  
- Step 3. Compile OSSEC with GeoIP enabled, modify config
-    get ossec-hids-2.7.tar.gz
-    tar xzvf ossec-hids-2.7.tar.gz
-    cd ossec-hids-2.7
+ Step 3. Compile OSPatrol with GeoIP enabled, modify config
+    get ospatrol-2.7.tar.gz
+    tar xzvf ospatrol-2.7.tar.gz
+    cd ospatrol-2.7
     cd src
     make setgeoip
     cd ..
     su
     ./install.sh
 
-  ------ modify etc/ossec.conf
-  <ossec_config>
+  ------ modify etc/ospatrol.conf
+  <ospatrol_config>
      <global>
          <!-- to specify GeoIP database file location -->
          <geoip_db_path>/etc/GeoLiteCity.dat</geoip_db_path>
@@ -48,13 +48,13 @@ cumentation for Adding GeoIP Support
          <!-- to add GeoIP info in alerts -->
          <use_geoip>yes</use_geoip>
       </alerts>
-  </ossec_config>
+  </ospatrol_config>
 
   ------ update etc/internal_options.conf
   # Maild display GeoIP data (0=disabled, 1=enabled)
   maild.geoip=1
 
-  ------ restart OSSEC
-    /var/ossec/bin/ossec-control restart
+  ------ restart OSPatrol
+    /var/ospatrol/bin/ospatrol-control restart
 
 

@@ -1,8 +1,8 @@
-.. _ossec_101_output_prelude:
+.. _ospatrol_101_output_prelude:
 
 
 
-OSSEC 101: prelude output
+OSPatrol 101: prelude output
 -------------------------
 
 

@@ -1,19 +1,19 @@
-.. _ossec_101_authd:
+.. _ospatrol_101_authd:
 
 
 
 
-OSSEC 101: authd
+OSPatrol 101: authd
 ----------------
 
-``ossec-authd`` and ``agent-auth`` are two OSSEC applications to automatically register an agent. 
-``ossec-authd`` is the server side daemon, and ``agent-auth`` runs on the agent.
+``ospatrol-authd`` and ``agent-auth`` are two OSPatrol applications to automatically register an agent. 
+``ospatrol-authd`` is the server side daemon, and ``agent-auth`` runs on the agent.
 
 
-Running ossec-authd:
+Running ospatrol-authd:
 ^^^^^^^^^^^^^^^^^^^^
 
-.. include:: authd/authd_ossec_authd.trst
+.. include:: authd/authd_ospatrol_authd.trst
 
 Running agent-auth:
 ^^^^^^^^^^^^^^^^^^^

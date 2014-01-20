@@ -5,13 +5,13 @@
 Supported Systems
 =================
 
-OSSEC supports the following operating systems and log formats.
+OSPatrol supports the following operating systems and log formats.
 
 
 Operating Systems
 ~~~~~~~~~~~~~~~~~
 
-The following operating systems are supported by the OSSEC agent:
+The following operating systems are supported by the OSPatrol agent:
 
 * GNU/Linux (all distributions, including RHEL, Ubuntu, Slackware, Debian, etc)
 * Windows XP, 2003, Vista, 2008
@@ -46,7 +46,7 @@ These systems/devices are also supported via remote syslog:
 Devices and Operating Systems via Agentless
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using OSSEC agentless options, the following systems are also supported (for 
+Using OSPatrol agentless options, the following systems are also supported (for 
 log analysis and file integrity checking):
 
 * Cisco PIX, ASA and FWSM (all versions)

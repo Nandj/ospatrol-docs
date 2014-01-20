@@ -1,4 +1,4 @@
-.. _ossec_101_todo:
+.. _ospatrol_101_todo:
 
 
 * rule tuning

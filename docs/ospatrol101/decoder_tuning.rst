@@ -1,10 +1,10 @@
-.. _ossec_101_decoder_tuning:
+.. _ospatrol_101_decoder_tuning:
 
 
-OSSEC 101: Decoders 
+OSPatrol 101: Decoders 
 -------------------
 
-  This section will explain OSSEC decoders.
+  This section will explain OSPatrol decoders.
 
 
 Understanding the decoders:

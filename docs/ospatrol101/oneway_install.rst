@@ -1,7 +1,7 @@
-.. _ossec_101_oneway_install:
+.. _ospatrol_101_oneway_install:
 
 
-OSSEC 101: One Way Communication Installation
+OSPatrol 101: One Way Communication Installation
 ---------------------------------------------
 
 Sometimes communication with agents can only go one way.

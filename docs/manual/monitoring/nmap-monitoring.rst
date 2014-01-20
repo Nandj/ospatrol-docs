@@ -5,39 +5,39 @@ Nmap correlation
 
 Ossec can read `nmap's <http://nmap.org>`_ `grepable output <http://nmap.org/book/output-formats-grepable-output.html>`_ files to use as a correlation tool, and to alert based on host information changes.
 
-Configuring OSSEC:
+Configuring OSPatrol:
 ------------------
 
-1. Add the nmap output file on ``/var/ossec/etc/ossec.conf``:
+1. Add the nmap output file on ``/var/ospatrol/etc/ospatrol.conf``:
 
 
 .. code-block:: console
 
-  <ossec_config>
+  <ospatrol_config>
    <localfile>
       <log_format>nmapg</log_format>
       <location>/var/log/nmap-out.log</location>
     </localfile>
-  </ossec_config>
+  </ospatrol_config>
 
 
 2. If the file does not exist, touch it:
 
 .. code-block:: console
 
-  ossec-test# touch /var/log/nmap-out.log
+  ospatrol-test# touch /var/log/nmap-out.log
 
-3. Restart ossec:
+3. Restart ospatrol:
 
 .. code-block:: console
 
-  ossec-test# /var/ossec/bin/ossec-control restart
+  ospatrol-test# /var/ospatrol/bin/ospatrol-control restart
 
 4. Run your nmap scans (example scanning 192.168.2.0/24 network):
 
 .. code-block:: console
 
-  ossec-test# nmap --append_output -sU -sT -oG /var/log/nmap-out.log 192.168.2.0-255
+  ospatrol-test# nmap --append_output -sU -sT -oG /var/log/nmap-out.log 192.168.2.0-255
 
  
 I've found that this is handiest when paired with a routine nmap scan.
@@ -46,7 +46,7 @@ I've found that this is handiest when paired with a routine nmap scan.
 
 .. code-block:: console
 
-  ossec-test#crontab -e
+  ospatrol-test#crontab -e
   15 * * * * nmap --append_output -sU -sT -oG /var/log/nmap-out.log 192.168.2.0-255
 
 

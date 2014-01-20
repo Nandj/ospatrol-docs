@@ -3,11 +3,11 @@
 Agents 
 ====== 
 
-There are two types of agents within OSSEC: installable agents and agentless 
+There are two types of agents within OSPatrol: installable agents and agentless 
 agents.  Installable agents are installed on hosts, and they report back to 
-a central OSSEC server via the OSSEC encrypted message protocol.  Agentless 
+a central OSPatrol server via the OSPatrol encrypted message protocol.  Agentless 
 agents require no installation on remote hosts. They are processes initiated 
-from the OSSEC manager, which gather information from remote systems, and use 
+from the OSPatrol manager, which gather information from remote systems, and use 
 any RPC method (e.g. ssh, snmp rdp, wmi).
 
 

@@ -1,8 +1,8 @@
-.. _ossec_101_output_syslog:
+.. _ospatrol_101_output_syslog:
 
 
 
-OSSEC 101: syslog output
+OSPatrol 101: syslog output
 ------------------------
 
 

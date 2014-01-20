@@ -1,4 +1,4 @@
-.. _ossec_101_manage_agents:
+.. _ospatrol_101_manage_agents:
 
 manage_agents:
 --------------

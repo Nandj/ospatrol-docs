@@ -1,8 +1,8 @@
-ossec.conf and agent.conf
+ospatrol.conf and agent.conf
 -------------------------
 
-For agent/server installs OSSEC has some centralized configuration options available.
-While a normal configuration exists in ``/var/ossec/etc/ossec.conf`` on each system, agents can also use ``/var/ossec/etc/shared/agent.conf``. 
+For agent/server installs OSPatrol has some centralized configuration options available.
+While a normal configuration exists in ``/var/ospatrol/etc/ospatrol.conf`` on each system, agents can also use ``/var/ospatrol/etc/shared/agent.conf``. 
 The agent.conf exists on each system, but is distributed from the manager. 
 Any changes made to the agent.conf on an agent will be overwritten the next time the file is transferred from the manager.
 
@@ -13,7 +13,7 @@ Configuration by Operating System:
 
 It is possible to configure systems based on the operating system they run. This can be useful when monitoring log files that are in one location on one OS, and either absent or in a different location on another OS.
 
-For instance OpenBSD has a logfile named ``/var/log/daemon`` that is not present on most other systems. To make sure the file is monitored we can add the following to ``/var/ossec/etc/shared/agent.conf`` on the manager:
+For instance OpenBSD has a logfile named ``/var/log/daemon`` that is not present on most other systems. To make sure the file is monitored we can add the following to ``/var/ospatrol/etc/shared/agent.conf`` on the manager:
 
 .. code-block:: console
 
@@ -28,7 +28,7 @@ For instance OpenBSD has a logfile named ``/var/log/daemon`` that is not present
 Configuration by Agent Name:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-These same changes can reference a system by agent name as well. In this instance I want to monitor ``/var/log/nmap-out.log`` on agent99, but don't want to modify agent99's ``ossec.conf``. Adding the following to the ``agent.conf`` accomplishes this:
+These same changes can reference a system by agent name as well. In this instance I want to monitor ``/var/log/nmap-out.log`` on agent99, but don't want to modify agent99's ``ospatrol.conf``. Adding the following to the ``agent.conf`` accomplishes this:
 
 .. code-block:: console
 
@@ -54,17 +54,17 @@ Profiles are the newest option for the ``agent.conf``. A popular way to use this
     </localfile>
   </agent_config>
 
-This option does require modification of the agent's ``ossec.conf``. i
-The ``<client>`` section of the agent's ``ossec.conf`` will need to include a ``<config-profile>`` option with all desired profiles (comma separated).
+This option does require modification of the agent's ``ospatrol.conf``. i
+The ``<client>`` section of the agent's ``ospatrol.conf`` will need to include a ``<config-profile>`` option with all desired profiles (comma separated).
 
 .. code-block:: console
 
-  <ossec_config>
+  <ospatrol_config>
     <client>
       <server-ip>192.168.1.100</server-ip>
       <config-profile>webserver</config-profile>
     </client>
-  </ossec_config>
+  </ospatrol_config>
 
 
 
@@ -79,13 +79,13 @@ This is the command and active response definition enabling the restart:
 .. code-block:: console
 
     <command>
-      <name>restart-ossec</name>
-      <executable>restart-ossec.sh</executable>
+      <name>restart-ospatrol</name>
+      <executable>restart-ospatrol.sh</executable>
       <expect></expect>
     </command>
 
     <active-response>
-      <command>restart-ossec</command>
+      <command>restart-ospatrol</command>
       <location>local</location>
       <rules_id>510010</rules_id>
     </active-response>
@@ -97,9 +97,9 @@ This is the rule referenced in the ``<active-response>`` above:
 
     <rule id="510010" level="10">
       <if_sid>550</if_sid>
-      <match>/var/ossec/etc/shared/agent.conf</match>
+      <match>/var/ospatrol/etc/shared/agent.conf</match>
       <description>agent.conf has been modified.</description>
     </rule>
 
 
-When syscheck finds a modified ``agent.conf`` rule 510010 is triggered, which triggers the restart-ossec active response.
+When syscheck finds a modified ``agent.conf`` rule 510010 is triggered, which triggers the restart-ospatrol active response.

@@ -1,4 +1,4 @@
-.. _ossec_101_syscheck_realtime:
+.. _ospatrol_101_syscheck_realtime:
 
 
 Syscheck's realtime option can be quite useful for very important directories.
