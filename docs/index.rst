@@ -1,13 +1,13 @@
-.. OSSEC Rules documentation master file, created byA
+.. OSPatrol Rules documentation master file, created byA
    sphinx-quickstart on Sat Jul 17 09:20:30 2010.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
 =================================
-Welcome to OSSEC's documentation!
+Welcome to OSPatrol's documentation!
 =================================
 
-OSSEC is an Open Source Host-based Intrusion Detection System. It performs log analysis, 
+OSPatrol is an Open Source Host-based Intrusion Detection System. It performs log analysis, 
 integrity checking, Windows registry monitoring, rootkit detection, real-time alerting 
 and active response. It runs on most operating systems, including Linux, OpenBSD, 
 FreeBSD, Mac OS X, Solaris and Windows. A list with all supported platforms is available
