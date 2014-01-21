@@ -1,9 +1,15 @@
-.. _ossec_articles:
+.. _ospatrol_articles:
  
+Posts about OSPatrol 
+====================
+
+
  
  
 Posts about OSSEC
 =================
+
+The following posts are about OSSEC from which OSPatrol is forked.  
  
 2011-28-11: 
  `Vulnerability Management: OSSEC & Secunia PSI <http://blog.rootshell.be/2011/11/28/vulnerability-management-ossec-secunia-psi/>`_ by Xavier Mertens

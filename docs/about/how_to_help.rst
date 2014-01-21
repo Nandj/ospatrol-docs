@@ -1,26 +1,26 @@
 How to start helping with the project?
 --------------------------------------
 
-OSSEC is maintained by a small group of people from around the world. If you wish to
+OSPatrol is maintained by a small group of people from around the world. If you wish to
 get involved, there are multiple ways to do so. Check out our list of active contributors:
-`ossec team <http://www.ossec.net/en/about.html#dev-team>`_.
+`ospatrol team <http://www.ospatrol.net/en/about.html#dev-team>`_.
 
 
-Testing OSSEC:
-^^^^^^^^^^^^^^
+Testing OSPatrol:
+^^^^^^^^^^^^^^^^^
 
-The easiest way of getting involved with OSSEC is by helping testing it. We always release 
+The easiest way of getting involved with OSPatrol is by helping testing it. We always release 
 beta versions and we need a good quality control on every supported version before publicly
 releasing it.
 
 
-Translating OSSEC:
-^^^^^^^^^^^^^^^^^^
+Translating OSPatrol:
+^^^^^^^^^^^^^^^^^^^^^
 
-Translating OSSEC is easy. We already support many languages, but new ones are more than welcome and fixes
+Translating OSPatrol is easy. We already support many languages, but new ones are more than welcome and fixes
 for the ones we have already too.
 
-After you download OSSEC and untar/ungzip it, you will find the messages to be translated inside the etc/templates 
+After you download OSPatrol and untar/ungzip it, you will find the messages to be translated inside the etc/templates 
 directory:
 
 .. code-block:: console
@@ -42,19 +42,19 @@ If you want to support a new language, just copy the English one to your contry 
    $ cp -pr en br
    $ vim br/messages.txt
 
-Documenting OSSEC:
-^^^^^^^^^^^^^^^^^^
+Documenting OSPatrol:
+^^^^^^^^^^^^^^^^^^^^^
 
-Development of the OSSEC web ui:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Development of the OSPatrol web ui:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Requires HTML/PHP knowledge.
 
 
-Development of OSSEC:
-^^^^^^^^^^^^^^^^^^^^^
+Development of OSPatrol:
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-The last way to get involved is by actually helping with the development of ossec. You must
+The last way to get involved is by actually helping with the development of ospatrol. You must
 know **C** and be willing to take some time (actually quite some time) to understand how 
 the internals work.
 
